@@ -1,0 +1,43 @@
+body {
+  scroll-behavior: smooth;
+  transition: background-color 0.5s, color 0.5s;
+}
+
+/* Плаваюче меню */
+#header {
+  top: 0;
+  left: 0;
+}
+
+/* Hover-ефекти на картках проектів */
+.project-card img {
+  transition: transform 0.5s, filter 0.5s;
+}
+.project-card:hover img {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+/* Hover-ефекти контактів */
+.contact-item {
+  transition: transform 0.3s, color 0.3s;
+}
+.contact-item:hover {
+  transform: translateX(5px);
+}
+
+/* Темний режим */
+body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+body.dark-mode header {
+  background-color: #1f1f1f;
+}
+body.dark-mode .project-card {
+  background-color: #1e1e1e;
+  border-color: #333;
+}
+body.dark-mode .skill-bar {
+  background-color: #4f46e5;
+}
