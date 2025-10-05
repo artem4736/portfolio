@@ -8,9 +8,13 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans transition-colors duration-500">
+<body class="relative font-sans text-gray-800 bg-gray-50 overflow-x-hidden">
 
-<!-- Плаваюче меню -->
+  <img id="decorImg" 
+       src="assets/img/decor.png" 
+       alt="Декоративний фон"
+       class="absolute top-20 right-0 w-80 opacity-25 rotate-12 pointer-events-none select-none -z-10 transition-transform duration-300 ease-out">
+
 <header id="header" class="fixed w-full bg-white shadow-md z-50 transition-transform duration-500">
   <nav class="max-w-6xl mx-auto flex justify-between items-center p-4">
     <div class="text-2xl font-bold">Артем Шевченко</div>
@@ -94,6 +98,7 @@
 <script src="script.js"></script>
 </body>
 </html>
+
 
 
 
