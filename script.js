@@ -9,20 +9,7 @@ window.addEventListener('load', () => {
   });
 });
 // Темний режим
- const btn = document.getElementById('darkModeBtn');
-  const html = document.documentElement;
-
-  if (localStorage.getItem('theme') === 'dark') {
-    html.classList.add('dark');
-  }
-
-  btn.addEventListener('click', () => {
-    html.classList.toggle('dark');
-    if (html.classList.contains('dark')) {
-      localStorage.setItem('theme', 'dark');
-    } else {
-      localStorage.setItem('theme', 'light');
-    }
-  });
-
-
+ const darkModeBtn = document.getElementById('darkModeBtn');
+darkModeBtn.addEventListener('click', () => {
+  document.body.classList.toggle('dark-mode');
+});
