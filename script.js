@@ -15,6 +15,9 @@ darkModeBtn.addEventListener('click', () => {
 });
 // Плаваюче меню при скролі
 
+let lastScroll = 0;
+const header = document.getElementById('header');
+
 window.addEventListener('scroll', () => {
   const currentScroll = window.scrollY;
 
@@ -32,6 +35,7 @@ window.addEventListener('scroll', () => {
 
   lastScroll = currentScroll;
 });
+
 
 
 
