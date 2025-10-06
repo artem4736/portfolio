@@ -20,7 +20,7 @@ const header = document.getElementById('header');
 window.addEventListener('scroll', () => {
   const currentScroll = window.pageYOffset;
   if(currentScroll > lastScroll){
-    
+    header.style.transform = "translateY(0)"; /
   } else {
     header.style.transform = "translateY(0)"; // показуємо при скролі вгору
   }
