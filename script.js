@@ -13,19 +13,26 @@ const darkModeBtn = document.getElementById('darkModeBtn');
 darkModeBtn.addEventListener('click', () => {
   document.body.classList.toggle('dark-mode');
 });
-
 // Плаваюче меню при скролі
-let lastScroll = 0;
-const header = document.getElementById('header');
+
 window.addEventListener('scroll', () => {
-  const currentScroll = window.pageYOffset;
-  if(currentScroll > lastScroll){
-    header.style.transform = "translateY(0)"; /
-  } else {
-    header.style.transform = "translateY(0)"; // показуємо при скролі вгору
+  const currentScroll = window.scrollY;
+
+  if (currentScroll <= 0) {
+    header.classList.remove('-translate-y-full');
+  } 
+  else if (currentScroll > lastScroll) {
+    // Скролимо вниз — шапка ховається
+    header.classList.add('-translate-y-full');
+  } 
+  else {
+    // Скролимо вгору — шапка показується
+    header.classList.remove('-translate-y-full');
   }
+
   lastScroll = currentScroll;
 });
+
 
 
 
