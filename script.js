@@ -9,15 +9,20 @@ window.addEventListener('load', () => {
   });
 });
 // Темний режим
-const darkModeBtn = document.getElementById('darkModeBtn');
-darkModeBtn.addEventListener('click', () => {
-  document.body.classList.toggle('dark-mode');
-});
-// Плаваюче меню при скролі
+ const btn = document.getElementById('darkModeBtn');
+  const html = document.documentElement;
 
+  // Якщо раніше користувач уже вмикав темну тему — залишаємо її
+  if (localStorage.getItem('theme') === 'dark') {
+    html.classList.add('dark');
+  }
 
-
-
-
-
-
+  btn.addEventListener('click', () => {
+    html.classList.toggle('dark');
+    // Запам’ятати стан
+    if (html.classList.contains('dark')) {
+      localStorage.setItem('theme', 'dark');
+    } else {
+      localStorage.setItem('theme', 'light');
+    }
+  });
