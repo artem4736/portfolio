@@ -1,7 +1,6 @@
 // Плавна анімація GSAP
 window.addEventListener('load', () => {
   gsap.from("section", {opacity:0, y:50, duration:1, stagger:0.3});
-
   // Прогрес-бари навичок
   const bars = document.querySelectorAll('.skill-bar');
   bars.forEach(bar => {
@@ -9,7 +8,6 @@ window.addEventListener('load', () => {
     gsap.to(bar, {width: width, duration: 1.5, ease: "power2.out", delay: 1});
   });
 });
-
 // Темний режим
 const darkModeBtn = document.getElementById('darkModeBtn');
 darkModeBtn.addEventListener('click', () => {
@@ -22,10 +20,11 @@ const header = document.getElementById('header');
 window.addEventListener('scroll', () => {
   const currentScroll = window.pageYOffset;
   if(currentScroll > lastScroll){
-    header.style.transform = "translateY(-100%)"; // ховаємо при скролі вниз
+    header.style.transform = "translateY(0)"; // ховаємо при скролі вниз
   } else {
     header.style.transform = "translateY(0)"; // показуємо при скролі вгору
   }
   lastScroll = currentScroll;
 });
+
 
