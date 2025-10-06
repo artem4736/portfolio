@@ -15,26 +15,7 @@ darkModeBtn.addEventListener('click', () => {
 });
 // Плаваюче меню при скролі
 
-let lastScroll = 0;
-const header = document.getElementById('header');
 
-window.addEventListener('scroll', () => {
-  const currentScroll = window.scrollY;
-
-  if (currentScroll <= 0) {
-    header.classList.remove('-translate-y-full');
-  } 
-  else if (currentScroll > lastScroll) {
-    // Скролимо вниз — шапка ховається
-    header.classList.add('-translate-y-full');
-  } 
-  else {
-    // Скролимо вгору — шапка показується
-    header.classList.remove('-translate-y-full');
-  }
-
-  lastScroll = currentScroll;
-});
 
 
 
