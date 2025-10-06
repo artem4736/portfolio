@@ -20,11 +20,12 @@ const header = document.getElementById('header');
 window.addEventListener('scroll', () => {
   const currentScroll = window.pageYOffset;
   if(currentScroll > lastScroll){
-    header.style.transform = "translateY(0)"; // ховаємо при скролі вниз
+    
   } else {
     header.style.transform = "translateY(0)"; // показуємо при скролі вгору
   }
   lastScroll = currentScroll;
 });
+
 
 
