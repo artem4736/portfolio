@@ -25,7 +25,13 @@ body {
 .contact-item:hover {
   transform: translateX(5px);
 }
-
+.resize-img {
+  width: 1400px; 
+  height: 585px; 
+}
+.opacity-transparentimg {
+  opacity: 0.6; 
+}
 /* Темний режим */
 body.dark-mode {
   background-color: #121212;
