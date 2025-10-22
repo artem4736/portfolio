@@ -25,6 +25,17 @@ body {
 .contact-item:hover {
   transform: translateX(5px);
 }
+.decor-img {
+      position: absolute;
+      top: 0;
+      right: 0;
+      pointer-events: none;
+      user-select: none;
+      z-index: -10;
+      transition: transform 0.3s ease-out;
+      opacity: 0.3;
+ }
+
 .resize-img {
   width: 1400px; 
   height: 585px; 
@@ -47,3 +58,7 @@ body.dark-mode .project-card {
 body.dark-mode .skill-bar {
   background-color: #4f46e5;
 }
+
+  background-color: #4f46e5;
+}
+
