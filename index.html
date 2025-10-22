@@ -13,19 +13,21 @@
 <header id="header" class="fixed top-0 left-0 w-full bg-white shadow-md z-50 transition-all duration-300">
   <nav class="max-w-6xl mx-auto flex justify-between items-center p-4">
     <div class="text-2xl font-bold">Артем Шевченко</div>
-    <ul class="flex space-x-6">
-      <li><a href="#home" class="hover:text-blue-600 transition">Головна</a></li>
-      <li><a href="#about" class="hover:text-blue-600 transition">Про себе</a></li>
-      <li><a href="#projects" class="hover:text-blue-600 transition">Освіта</a></li>
-      <li><a href="#chess" class="hover:text-blue-600 transition">Шахи</a></li>
-      <li><a href="#programming" class="hover:text-blue-600 transition">Програмування</a></li>
-      <li><a href="#skills" class="hover:text-blue-600 transition">Навички</a></li>
-      <li><a href="#contact" class="hover:text-blue-600 transition">Контакти</a></li>
-      <li><button id="darkModeBtn" class="ml-4 px-2 py-1 bg-gray-200 rounded hover:bg-gray-300">Темний режим</button></li>
+    <button id="menu-btn" class="md:hidden text-3xl focus:outline-none">
+      ☰
+    </button>
+<ul id="menu" class="hidden md:flex space-x-6 flex-col md:flex-row md:space-y-0 absolute md:static bg-white md:bg-transparent w-full left-0 top-16 md:w-auto md:h-auto shadow-md md:shadow-none text-center md:text-left">
+      <li><a href="#home" class="block py-2 hover:text-blue-600 transition">Головна</a></li>
+      <li><a href="#about" class="block py-2 hover:text-blue-600 transition">Про себе</a></li>
+      <li><a href="#projects" class="block py-2 hover:text-blue-600 transition">Освіта</a></li>
+      <li><a href="#chess" class="block py-2 hover:text-blue-600 transition">Шахи</a></li>
+      <li><a href="#programming" class="block py-2 hover:text-blue-600 transition">Програмування</a></li>
+      <li><a href="#skills" class="block py-2 hover:text-blue-600 transition">Навички</a></li>
+      <li><a href="#contact" class="block py-2 hover:text-blue-600 transition">Контакти</a></li>
+      <li><button id="darkModeBtn" class="ml-0 md:ml-4 px-2 py-1 bg-gray-200 rounded hover:bg-gray-300">Темний режим</button></li>
     </ul>
   </nav>
 </header>
-
 <!-- Головна секція -->
 <section id="home" class="py-24 flex flex-col justify-center items-center text-center pt-24 relative">
  <div class="w-56 h-56 rounded-full p-[4px] bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 shadow-2xl mb-6">
@@ -115,3 +117,4 @@
 <script src="script.js"></script>
 </body>
 </html>
+
