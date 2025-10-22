@@ -8,12 +8,8 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
 </head>
-<body>
-  <img id="decorImg"  
-       src="assets/img/decor.png" 
-       alt="Декоративний фон"
-              class="absolute top-0 right-0 resize-img opacity-transparentimg rotate-0 pointer-events-none select-none -z-10 transition-transform duration-300 ease-out">
-
+<body class="relative">
+  
 <header id="header" class="fixed top-0 left-0 w-full bg-white shadow-md z-50 transition-all duration-300">
   <nav class="max-w-6xl mx-auto flex justify-between items-center p-4">
     <div class="text-2xl font-bold">Артем Шевченко</div>
@@ -21,7 +17,7 @@
       <li><a href="#home" class="hover:text-blue-600 transition">Головна</a></li>
       <li><a href="#about" class="hover:text-blue-600 transition">Про себе</a></li>
       <li><a href="#projects" class="hover:text-blue-600 transition">Освіта</a></li>
-      <li><a href="#chess" class="hover:text-blue-600 transition">Шахи </a></li>
+      <li><a href="#chess" class="hover:text-blue-600 transition">Шахи</a></li>
       <li><a href="#programming" class="hover:text-blue-600 transition">Програмування</a></li>
       <li><a href="#skills" class="hover:text-blue-600 transition">Навички</a></li>
       <li><a href="#contact" class="hover:text-blue-600 transition">Контакти</a></li>
@@ -31,8 +27,8 @@
 </header>
 
 <!-- Головна секція -->
-<section id="home" class="min-h-screen flex flex-col justify-center items-center text-center pt-24">
- <div class="w-56 h-56 rounded-full p-[4px] bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 shadow-2xl">
+<section id="home" class="py-24 flex flex-col justify-center items-center text-center pt-24 relative">
+ <div class="w-56 h-56 rounded-full p-[4px] bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 shadow-2xl mb-6">
   <img src="assets/img/photo.jpg" alt="Фото" 
        class="w-full h-full rounded-full object-cover border-4 border-white">
 </div>
@@ -42,12 +38,8 @@
 </section>
 
 <!-- Про себе -->
-<section id="about" class="min-h-screen flex flex-col justify-center items-center  p-8 text-center">
- <img id="decorImg"  
-       src="assets/img/good.png" 
-       alt="Декоративний фон"
-              class="absolute top-0 right-0 resize-img  rotate-0 pointer-events-none select-none -z-10 transition-transform duration-300 ease-out">
-  <h2 class="text-4xl font-semibold mb-6">Про себе</h2>
+<section id="about" class="py-l2  flex flex-col justify-center items-center p-8 text-center  relative">
+   <h2 class="text-4xl font-semibold mb-6">Про себе</h2>
   <p class="max-w-2xl">
     Привіт! Я — Артем, професійний шахіст та студент-програміст.
 Поєдную аналітичне мислення шахів із логікою програмування, створюючи ефективні та продумані рішення як у коді, так і на шахівниці.
@@ -56,12 +48,7 @@
 </section>
 
 <!-- Досягнення -->
-<section id="projects" class="min-h-screen flex flex-col justify-center items-center  p-8 text-center">
-<img id="decorImg"  
-       src="assets/img/good.png" 
-       alt="Декоративний фон"
-              class="absolute top-0 right-0 resize-img  rotate-0 pointer-events-none select-none -z-10 transition-transform duration-300 ease-out">
-
+<section id="projects" class="py-l2 flex flex-col justify-center items-center p-8 text-center relative">
   <h2 class="text-4xl font-semibold mb-6">Освіта</h2>
   <p>
     2012–2023 — Херсонська загальноосвітня школа І–ІІІ ст. №44,
@@ -70,12 +57,7 @@
 спеціальність «Комп’ютерні науки»	
   </p>
 </section>
-<section id="chess" class="min-h-screen flex flex-col justify-center items-center  p-8 text-center">
-<img id="decorImg"  
-       src="assets/img/good.png" 
-       alt="Декоративний фон"
-              class="absolute top-0 right-0 resize-img  rotate-0 pointer-events-none select-none -z-10 transition-transform duration-300 ease-out">
-
+<section id="chess" class="py-l2 flex flex-col justify-center items-center p-8 text-center relative">
   <h2 class="text-4xl font-semibold mb-6">Шахи</h2>
   <p>
     Маю 12-річний досвід гри в шахи, I спортивний розряд.<br>
@@ -85,12 +67,7 @@
 Ці навички дуже допомагають у програмуванні. 
   </p>
 </section>
-<section id="programming" class="min-h-screen flex flex-col justify-center items-center  p-8 text-center">
-<img id="decorImg"  
-       src="assets/img/good.png" 
-       alt="Декоративний фон"
-              class="absolute top-0 right-0 resize-img  rotate-0 pointer-events-none select-none -z-10 transition-transform duration-300 ease-out">
-
+<section id="programming" class="py-l2 flex flex-col justify-center items-center p-8 text-center relative">
   <h2 class="text-4xl font-semibold mb-6">Програмування</h2>
   <p>
     Займаюся розробкою програмного забезпечення та веб-сайтів. 
@@ -100,43 +77,34 @@
  Реалізовував навчальні та курсові проєкти, включаючи системи нагадувань і інформаційні сервіси.
   </p>
 </section>
-<section id="skills" class="min-h-screen flex flex-col justify-center items-center  p-8 text-center">
-<img id="decorImg"  
-       src="assets/img/good.png" 
-       alt="Декоративний фон"
-              class="absolute top-0 right-0 resize-img  rotate-0 pointer-events-none select-none -z-10 transition-transform duration-300 ease-out">
+<section id="skills" class="py-l2 flex flex-col justify-center items-center p-8 text-center relative">
 
   <h2 class="text-4xl font-semibold mb-6">Навички</h2>
   <p>
-  <pre>  💻 Технічні
-Мови програмування: Python, PHP, C++
-Веброзробка: HTML, CSS, PHP
-Бази даних: MySQL, SQLite
-Контроль версій: Git, GitHub
-Алгоритми та структури даних
-Основи штучного інтелекту
-♟️ Шахові
-Рейтинг FIDE / Lichess
-Стратегічне мислення та планування
-Аналіз і оцінка позицій
-Аналітика партій
-Швидке прийняття рішень під тиском
-Участь у міжнародних турнірах
-Наставництво молодих гравців
-🌐 Мовні
-Українська — рідна
-Англійська — досконало (C1–C2) 
- </pre>
+ 💻 Технічні<br>
+Мови програмування: Python, PHP, C++<br>
+Веброзробка: HTML, CSS, PHP<br>
+Бази даних: MySQL, SQLite<br>
+Контроль версій: Git, GitHub<br>
+Алгоритми та структури даних<br>
+Основи штучного інтелекту<br>
+♟️ Шахові<br>
+Рейтинг FIDE / Lichess<br>
+Стратегічне мислення та планування<br>
+Аналіз і оцінка позицій<br>
+Аналітика партій<br>
+Швидке прийняття рішень під тиском<br>
+Участь у міжнародних турнірах<br>
+Наставництво молодих гравців<br>
+🌐 Мовні<br>
+Українська — рідна<br>
+Англійська — досконало  <br>
   </p>
 </section>
 
 </section>
 <!-- Контакти -->
-<section id="contact" class="min-h-screen p-8 flex flex-col justify-center items-center text-center">
-<img id="decorImg"  
-       src="assets/img/good.png" 
-       alt="Декоративний фон"
-              class="absolute top-0 right-0 resize-img  rotate-0 pointer-events-none select-none -z-10 transition-transform duration-300 ease-out">
+<section id="contact" class="py-l2 p-8 flex flex-col justify-center items-center text-center relative">
 
   <h2 class="text-4xl font-semibold mb-6">Контакти</h2>
   <p class="contact-item email hover:text-blue-500">Email: <a href="mailto:saa75752@gmail.com" class="hover:underline">saa75752@gmail.com</a></p>
