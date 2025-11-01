@@ -61,24 +61,24 @@
     .icon-hidden{ display:none !important; }
     .icon-visible{ display:inline-block !important; }
 
-    .section { padding:2rem 1rem; display:flex; justify-content:center; }
+    .section { padding:0; display:flex; justify-content:center; }
     .section-card {
       background: var(--surface);
-      box-shadow: 0 5px 18px rgba(0,0,0,0.07);
-      border-radius: 1rem;
-      padding: 2rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      border-radius: 0;
+      padding: 2.5rem 1rem;
       max-width: 75rem;
       width: 100%;
       text-align: center;
       transition: background-color .35s ease, box-shadow .35s ease;
     }
-    .section-card:hover {
-      box-shadow: 0 10px 28px rgba(0,0,0,0.1);
-    }
 
-    /* Менша відстань між секціями */
+    /* Видалення будь-яких відстаней між блоками */
+    main > section {
+      margin: 0;
+    }
     main > section + section {
-      margin-top: 1rem;
+      margin-top: 0;
     }
   </style>
 </head>
@@ -116,10 +116,10 @@
   </header>
 
   <!-- Main -->
-  <main class="pt-28 space-y-6">
+  <main class="pt-28">
 
     <!-- Головна без картки -->
-    <section id="home" class="py-16 text-center">
+    <section id="home" class="py-16 text-center bg-[var(--bg)]">
       <div class="mx-auto w-56 h-56 rounded-full overflow-hidden mb-6 shadow-lg">
         <img src="assets/img/photo.jpg" alt="Фото" style="width:100%;height:100%;object-fit:cover;">
       </div>
@@ -223,7 +223,7 @@
       <div class="section-card">
         <h2 class="text-3xl font-semibold mb-4">Контакти</h2>
         <p>Email: <a href="mailto:saa75752@gmail.com">saa75752@gmail.com</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/artem-shevchenko-661087360">linkedin.com/in/artem-shevchenko-661087360</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/artem-shevchenko-661087360">linkedin.com/in/artem-shevchenко-661087360</a></p>
         <p>Telegram: <a href="https://t.me/artem_chess">@artem_chess</a></p>
       </div>
     </section>
@@ -260,6 +260,7 @@
   </script>
 </body>
 </html>
+
 
 
 
