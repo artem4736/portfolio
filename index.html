@@ -61,25 +61,21 @@
     .icon-hidden{ display:none !important; }
     .icon-visible{ display:inline-block !important; }
 
+    /* Картковий стиль секцій */
     .section { padding:0; display:flex; justify-content:center; }
     .section-card {
       background: var(--surface);
       box-shadow: 0 4px 10px rgba(0,0,0,0.05);
       border-radius: 0;
-      padding: 2.5rem 1rem;
+      padding: 3rem 1rem;
       max-width: 75rem;
       width: 100%;
       text-align: center;
       transition: background-color .35s ease, box-shadow .35s ease;
     }
 
-    /* Видалення будь-яких відстаней між блоками */
-    main > section {
-      margin: 0;
-    }
-    main > section + section {
-      margin-top: 0;
-    }
+    main > section { margin: 0; }
+    main > section + section { margin-top: 0; }
   </style>
 </head>
 
@@ -118,13 +114,15 @@
   <!-- Main -->
   <main class="pt-28">
 
-    <!-- Головна без картки -->
-    <section id="home" class="py-16 text-center bg-[var(--bg)]">
-      <div class="mx-auto w-56 h-56 rounded-full overflow-hidden mb-6 shadow-lg">
-        <img src="assets/img/photo.jpg" alt="Фото" style="width:100%;height:100%;object-fit:cover;">
+    <!-- Головна -->
+    <section id="home" class="section">
+      <div class="section-card">
+        <div class="mx-auto w-56 h-56 rounded-full overflow-hidden mb-6 shadow-lg">
+          <img src="assets/img/photo.jpg" alt="Фото" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <h1 class="text-3xl md:text-4xl font-bold mb-2">Артем Шевченко</h1>
+        <p class="text-lg font-semibold mb-4">Професійний шахіст та студент-програміст</p>
       </div>
-      <h1 class="text-3xl md:text-4xl font-bold mb-2">Артем Шевченко</h1>
-      <p class="text-lg font-semibold mb-4">Професійний шахіст та студент-програміст</p>
     </section>
 
     <!-- Про себе -->
@@ -133,7 +131,7 @@
         <h2 class="text-3xl font-semibold mb-4">Про себе</h2>
         <p class="leading-relaxed max-w-3xl mx-auto">
           Привіт! Я — Артем, професійний шахіст і студент-програміст.
-          Поєдную аналітичне мислення шахів із логікою програмування, створюючи ефективні рішення як у коді, так і на шахівниці.
+          Поєдную аналітичне мислення шахів із логікою програмування, створюючи ефективні та продумані рішення як у коді, так і на шахівниці.
           Прагну поєднати інтелектуальну дисципліну з творчим підходом у сфері технологій.
         </p>
       </div>
@@ -159,7 +157,7 @@
             <p>
               Маю понад 12 років досвіду гри в шахи, I спортивний розряд.
               Учасник і призер міських, обласних, всеукраїнських та міжнародних турнірів.
-              Шахи сформували в мені стратегічне мислення, аналітичність і вміння швидко приймати рішення.
+              Шахи сформували в мені стратегічне та логічне мислення, вміння планувати наперед і швидко знаходити рішення.
             </p>
           </div>
 
@@ -223,7 +221,7 @@
       <div class="section-card">
         <h2 class="text-3xl font-semibold mb-4">Контакти</h2>
         <p>Email: <a href="mailto:saa75752@gmail.com">saa75752@gmail.com</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/artem-shevchenko-661087360">linkedin.com/in/artem-shevchenко-661087360</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/artem-shevchenko-661087360">linkedin.com/in/artem-shevchenko-661087360</a></p>
         <p>Telegram: <a href="https://t.me/artem_chess">@artem_chess</a></p>
       </div>
     </section>
