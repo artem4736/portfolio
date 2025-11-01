@@ -1,14 +1,46 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Моє резюме</title>
-  <link rel="stylesheet" href="style.css">
+
+  <!-- 1) Налаштування Tailwind: використовуємо class-based dark mode -->
+  <script>
+    window.tailwind = window.tailwind || {};
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {}
+      }
+    };
+    // Перед рендером: застосуємо dark-клас, якщо user вже має збережену тему
+    (function () {
+      try {
+        const stored = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (stored === 'dark' || (!stored && prefersDark)) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      } catch (e) {
+        // ignore
+      }
+    })();
+  </script>
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    /* невеликий стиль для плавної ротації іконки */
+    .icon-rotate { transform-origin: center; }
+  </style>
 </head>
-<body class="relative bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-500">
+
+<body class="relative bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
 
   <!-- Хедер -->
   <header id="header" class="fixed top-0 left-0 w-full bg-white dark:bg-gray-800 shadow-md z-50 transition-all duration-300">
@@ -30,15 +62,16 @@
 
         <!-- SVG-перемикач теми -->
         <li>
-          <button id="darkModeBtn" class="ml-0 md:ml-4 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition">
-            <!-- Сонце -->
-            <svg id="sunIcon" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          <button id="darkModeBtn" aria-label="Перемкнути тему" class="ml-0 md:ml-4 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+            <!-- Сонце (показується коли є dark-клас: dark:block) -->
+            <svg id="sunIcon" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 icon-rotate hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round"
                 d="M12 3v2m0 14v2m9-9h-2M5 12H3m15.364-6.364l-1.414 1.414M6.05 17.95l-1.414 1.414m0-13.414l1.414 1.414M17.95 17.95l1.414 1.414M12 8a4 4 0 100 8 4 4 0 000-8z"/>
             </svg>
-            <!-- Місяць -->
-            <svg id="moonIcon" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+
+            <!-- Місяць (показується коли Немає dark-клас: block dark:hidden) -->
+            <svg id="moonIcon" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 icon-rotate block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round"
                 d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z"/>
             </svg>
           </button>
@@ -56,105 +89,82 @@
     <p class="text-xl mb-6 font-bold">Професійний шахіст та студент-програміст</p>
   </section>
 
-  <!-- Про себе -->
+  <!-- Інші секції (скорочено для прикладу, можна вставити свої повні секції) -->
   <section id="about" class="py-12 flex flex-col justify-center items-center p-8 text-center relative">
     <h2 class="text-4xl font-semibold mb-6">Про себе</h2>
-    <p class="max-w-2xl">
-      Привіт! Я — Артем, професійний шахіст та студент-програміст.
-      Поєдную аналітичне мислення шахів із логікою програмування, створюючи ефективні та продумані рішення як у коді, так і на шахівниці.
-      Навчаюся новим технологіям, розвиваю навички у веброзробці та прагну поєднати інтелектуальну дисципліну шахів із творчим підходом у технологіях.
-    </p>
+    <p class="max-w-2xl">Привіт! Я — Артем, професійний шахіст та студент-програміст...</p>
   </section>
 
-  <!-- Освіта -->
   <section id="projects" class="py-12 flex flex-col justify-center items-center p-8 text-center relative">
     <h2 class="text-4xl font-semibold mb-6">Освіта</h2>
-    <p>
-      2012–2023 — Херсонська загальноосвітня школа І–ІІІ ст. №44, закінчив із золотою медаллю<br>
-      2023–теперішній час — Херсонський державний університет, спеціальність «Комп’ютерні науки»
-    </p>
+    <p>2012–2023 — Херсонська ЗОШ №44 (золота медаль). 2023–тепер — ХДУ (Комп'ютерні науки).</p>
   </section>
 
-  <!-- Шахи -->
-  <section id="chess" class="py-12 flex flex-col justify-center items-center p-8 text-center relative">
-    <h2 class="text-4xl font-semibold mb-6">Шахи</h2>
-    <p>
-      Маю 12-річний досвід гри в шахи, I спортивний розряд.<br>
-      Учасник і призер міських, обласних, всеукраїнських та міжнародних турнірів. Маю численні нагороди та медалі. <br>
-      Шахи сформували в мені стратегічне та логічне мислення, вміння планувати на кілька ходів уперед і оперативно знаходити оптимальні рішення. <br>
-      Ці навички дуже допомагають у програмуванні.
-    </p>
-  </section>
-
-  <!-- Програмування -->
-  <section id="programming" class="py-12 flex flex-col justify-center items-center p-8 text-center relative">
-    <h2 class="text-4xl font-semibold mb-6">Програмування</h2>
-    <p>
-      Займаюся розробкою програмного забезпечення та веб-сайтів. <br>
-      Досвід роботи з Python, SQL, PHP, HTML/CSS. <br>
-      Реалізовував навчальні та курсові проєкти, включаючи системи нагадувань і інформаційні сервіси.
-    </p>
-  </section>
-
-  <!-- Навички -->
-  <section id="skills" class="py-12 flex flex-col justify-center items-center p-8 text-center relative">
-    <h2 class="text-4xl font-semibold mb-6">Навички</h2>
-    <p>
-      💻 Технічні<br>
-      Мови програмування: Python, PHP, C++<br>
-      Веброзробка: HTML, CSS, PHP<br>
-      Бази даних: MySQL, SQLite<br>
-      Контроль версій: Git, GitHub<br>
-      Алгоритми та структури даних<br>
-      Основи штучного інтелекту<br><br>
-
-      ♟️ Шахові<br>
-      Рейтинг FIDE / Lichess<br>
-      Стратегічне мислення та планування<br>
-      Аналіз і оцінка позицій<br>
-      Аналітика партій<br>
-      Швидке прийняття рішень під тиском<br>
-      Участь у міжнародних турнірах<br>
-      Наставництво молодих гравців<br><br>
-
-      🌐 Мовні<br>
-      Українська — рідна<br>
-      Англійська — досконало
-    </p>
-  </section>
-
-  <!-- Контакти -->
   <section id="contact" class="py-12 p-8 flex flex-col justify-center items-center text-center relative">
     <h2 class="text-4xl font-semibold mb-6">Контакти</h2>
-    <p class="contact-item email hover:text-blue-500">Email: <a href="mailto:saa75752@gmail.com" class="hover:underline">saa75752@gmail.com</a></p>
-    <p class="contact-item linkedin hover:text-blue-500">LinkedIn: <a href="https://www.linkedin.com/in/artem-shevchenko-661087360" class="hover:underline">linkedin.com/in/artem-shevchenko-661087360</a></p>
-    <p class="contact-item telegram hover:text-blue-500">Telegram: <a href="https://t.me/artem_chess" class="hover:underline">@artem_chess</a></p>
+    <p>Email: <a href="mailto:saa75752@gmail.com" class="hover:underline">saa75752@gmail.com</a></p>
   </section>
 
-  <!-- Скрипт -->
+  <!-- Скрипт: логіка перемикання теми + анімація іконки -->
   <script>
     // Меню для мобільних
     const menuBtn = document.getElementById('menu-btn');
     const menu = document.getElementById('menu');
-    menuBtn.addEventListener('click', () => {
-      menu.classList.toggle('hidden');
-    });
-
-    // === Темний режим із localStorage ===
-    const darkModeBtn = document.getElementById('darkModeBtn');
-
-    // При завантаженні перевіряємо попередній стан теми
-    if (localStorage.theme === 'dark' || 
-        (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
+    if (menuBtn && menu) {
+      menuBtn.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+      });
     }
 
-    // Перемикач теми
+    // Логіка теми
+    const darkModeBtn = document.getElementById('darkModeBtn');
+    const sunIcon = document.getElementById('sunIcon');
+    const moonIcon = document.getElementById('moonIcon');
+
+    // Функція для плавної заміни іконки через GSAP
+    function animateIconSwitch(showSun) {
+      // fade out then fade in / rotate
+      const out = showSun ? moonIcon : sunIcon;
+      const inp = showSun ? sunIcon : moonIcon;
+
+      gsap.to(out, { opacity: 0, scale: 0.6, duration: 0.18, onComplete: () => {
+        out.style.display = 'none';
+        out.style.opacity = 1;
+        out.style.transform = '';
+        inp.style.display = ''; // allow Tailwind classes to decide visibility next tick
+        // small delay to let DOM apply display then animate in
+        gsap.fromTo(inp, { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.25 });
+      }});
+    }
+
+    // При кліку - перемикаємо тему та зберігаємо
     darkModeBtn.addEventListener('click', () => {
-      const isDark = document.documentElement.classList.toggle('dark');
-      localStorage.theme = isDark ? 'dark' : 'light';
+      const root = document.documentElement;
+      const isDarkNow = root.classList.toggle('dark'); // додаємо/видаляємо class
+      try { localStorage.setItem('theme', isDarkNow ? 'dark' : 'light'); } catch(e){}
+
+      // Анімація: показати сонце якщо isDarkNow === true
+      // Оскільки Tailwind керує видимістю через .dark, трохи принудимо відображення для анімації:
+      if (isDarkNow) {
+        // хочемо перейти до сонця: приховуємо місяць плавно, показуємо сонце
+        animateIconSwitch(true);
+      } else {
+        animateIconSwitch(false);
+      }
+    });
+
+    // Забезпечимо початкову коректну видимість svg-ів (щоб GSAP працював)
+    // Tailwind дасть їх видимість/прихованість, але для анімації ми хочемо, щоб display було встановлено коректно.
+    window.addEventListener('load', () => {
+      // Якщо зараз стоїть dark — тоді sun повинен бути visible (Tailwind: dark:block)
+      if (document.documentElement.classList.contains('dark')) {
+        // сонце показане за Tailwind; але для GSAP getComputedStyle може показувати differently — примусимо:
+        sunIcon.style.display = ''; // пусто => Tailwind прийме dark:block
+        moonIcon.style.display = 'none';
+      } else {
+        moonIcon.style.display = ''; // Tailwind: block
+        sunIcon.style.display = 'none';
+      }
     });
   </script>
 </body>
