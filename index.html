@@ -140,10 +140,21 @@
       menu.classList.toggle('hidden');
     });
 
-    // Темний режим
+    // === Темний режим із localStorage ===
     const darkModeBtn = document.getElementById('darkModeBtn');
+
+    // При завантаженні перевіряємо попередній стан теми
+    if (localStorage.theme === 'dark' || 
+        (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+
+    // Перемикач теми
     darkModeBtn.addEventListener('click', () => {
-      document.documentElement.classList.toggle('dark');
+      const isDark = document.documentElement.classList.toggle('dark');
+      localStorage.theme = isDark ? 'dark' : 'light';
     });
   </script>
 </body>
