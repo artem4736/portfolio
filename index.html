@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Моє резюме — Артем Шевченко</title>
+  <title>Артем Шевченко — Резюме</title>
 
   <!-- Збереження теми -->
   <script>
@@ -25,15 +25,14 @@
 
   <style>
     :root {
-      /* 🌤 Світла тема — білий фон + ніжна блакитна рамка */
+      /* 🌤 Світла тема */
       --bg: #ffffff;
       --surface: #ffffff;
-      --border: #dbeafe; /* світло-блакитна рамка */
+      --border: #dbeafe; /* ніжно-блакитна рамка */
       --text: #0f172a;
       --muted: #374151;
       --accent: #2563eb;
     }
-
     .dark {
       /* 🌙 Темна тема */
       --bg: #0b1220;
@@ -63,14 +62,12 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 38px;
-      height: 38px;
+      width: 38px; height: 38px;
       border-radius: 999px;
       background: transparent;
       border: none;
       cursor: pointer;
     }
-
     .theme-btn:hover { background: rgba(255,255,255,0.04); }
 
     .icon-hidden { display: none !important; }
@@ -81,8 +78,8 @@
       padding: 0;
       display: flex;
       justify-content: center;
+      margin-bottom: 8px; /* 🩵 2 мм між картками */
     }
-
     .section-card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -120,12 +117,19 @@
         <!-- Перемикач теми -->
         <button id="themeToggle" class="theme-btn" aria-label="Перемкнути тему">
           <!-- Місяць -->
-          <svg id="moon" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 icon-visible" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+          <svg id="moon" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 icon-visible"
+               fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
           </svg>
           <!-- Сонце -->
-          <svg id="sun" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 icon-hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2m0 14v2M5 12H3m18 0h-2M6.343 6.343l-1.414-1.414M19.071 19.071l-1.414-1.414M6.343 17.657l-1.414 1.414M19.071 4.929l-1.414 1.414M12 8a4 4 0 100 8 4 4 0 000-8z"/>
+          <svg id="sun" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 icon-hidden"
+               fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M12 3v2m0 14v2M5 12H3m18 0h-2
+                     M6.343 6.343l-1.414-1.414M19.071 19.071l-1.414-1.414
+                     M6.343 17.657l-1.414 1.414M19.071 4.929l-1.414 1.414
+                     M12 8a4 4 0 100 8 4 4 0 000-8z"/>
           </svg>
         </button>
       </div>
@@ -139,10 +143,13 @@
     <section id="home" class="section">
       <div class="section-card">
         <div class="mx-auto w-56 h-56 rounded-full overflow-hidden mb-6 shadow-lg">
-          <img src="assets/img/photo.jpg" alt="Фото" style="width:100%;height:100%;object-fit:cover;">
+          <img src="assets/img/photo.jpg" alt="Фото"
+               style="width:100%;height:100%;object-fit:cover;">
         </div>
         <h1 class="text-3xl md:text-4xl font-bold mb-2">Артем Шевченко</h1>
-        <p class="text-lg font-semibold mb-4">Професійний шахіст та студент-програміст</p>
+        <p class="text-lg font-semibold mb-4">
+          Професійний шахіст та студент-програміст
+        </p>
       </div>
     </section>
 
@@ -152,7 +159,7 @@
         <h2 class="text-3xl font-semibold mb-4">Про себе</h2>
         <p class="leading-relaxed max-w-3xl mx-auto">
           Привіт! Я — Артем, професійний шахіст і студент-програміст.
-          Поєдную аналітичне мислення шахів із логікою програмування, створюючи ефективні та продумані рішення як у коді, так і на шахівниці.
+          Поєдную аналітичне мислення шахів із логікою програмування, створюючи ефективні рішення як у коді, так і на шахівниці.
           Прагну поєднати інтелектуальну дисципліну з творчим підходом у сфері технологій.
         </p>
       </div>
@@ -162,8 +169,10 @@
     <section id="projects" class="section">
       <div class="section-card">
         <h2 class="text-3xl font-semibold mb-4">Освіта</h2>
-        <p>2023–теперішній час — Херсонський державний університет, спеціальність «Комп’ютерні науки»<br>
-           2012–2023 — Херсонська ЗОШ №44, закінчив із золотою медаллю</p>
+        <p>
+          2023–теперішній час — Херсонський державний університет, спеціальність «Комп’ютерні науки»<br>
+          2012–2023 — Херсонська ЗОШ №44, закінчив із золотою медаллю
+        </p>
       </div>
     </section>
 
@@ -177,7 +186,7 @@
             <p>
               Маю понад 12 років досвіду гри в шахи, I спортивний розряд.
               Учасник і призер міських, обласних, всеукраїнських та міжнародних турнірів.
-              Шахи сформували в мені стратегічне мислення, вміння планувати наперед і швидко знаходити рішення.
+              Шахи сформували стратегічне мислення, вміння планувати й швидко знаходити рішення.
             </p>
           </div>
 
@@ -242,9 +251,10 @@
         <p>Telegram: <a href="https://t.me/artem_chess">@artem_chess</a></p>
       </div>
     </section>
+
   </main>
 
-  <!-- Скрипт теми -->
+  <!-- Скрипт перемикання теми -->
   <script>
     (function(){
       const btn = document.getElementById('themeToggle');
@@ -267,14 +277,19 @@
         if (window.gsap){
           const fadeOut = nowDark ? moon : sun;
           const fadeIn = nowDark ? sun : moon;
-          gsap.to(fadeOut, {opacity:0, scale:0.7, duration:0.18, onComplete:()=>{syncIcons(); gsap.fromTo(fadeIn,{opacity:0,scale:0.7},{opacity:1,scale:1,duration:0.22});}});
+          gsap.to(fadeOut, {
+            opacity: 0, scale: 0.7, duration: 0.18,
+            onComplete: () => {
+              syncIcons();
+              gsap.fromTo(fadeIn, {opacity: 0, scale: 0.7}, {opacity: 1, scale: 1, duration: 0.22});
+            }
+          });
         } else syncIcons();
       });
     })();
   </script>
 </body>
 </html>
-
 
 
 
