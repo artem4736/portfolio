@@ -5,11 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Моє резюме — Артем Шевченко</title>
 
-  <!-- Tailwind з класовим dark mode -->
+  <!-- ✅ Tailwind (із class-based dark mode) -->
   <script>
-    window.tailwind = { config: { darkMode: 'class' } };
-    // Встановлення теми ще до завантаження сторінки (щоб не блимало)
-    (() => {
+    tailwind = {
+      config: {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              darkbg: "#0f172a",
+              darktext: "#f8fafc",
+            },
+          },
+        },
+      },
+    };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    .icon-rotate { transform-origin: center; }
+    body { transition: background-color 0.4s, color 0.4s; }
+  </style>
+
+  <!-- Завантаження теми до рендеру сторінки -->
+  <script>
+    (function() {
       const savedTheme = localStorage.getItem("theme");
       const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
       if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
@@ -17,20 +40,12 @@
       }
     })();
   </script>
-
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
-
-  <style>
-    html { scroll-behavior: smooth; }
-    .icon-rotate { transform-origin: center; }
-  </style>
 </head>
 
-<body class="relative bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+<body class="bg-white text-gray-900 dark:bg-darkbg dark:text-darktext transition-colors duration-300">
 
   <!-- 🔹 Хедер -->
-  <header id="header" class="fixed top-0 left-0 w-full bg-white dark:bg-gray-800 shadow-md z-50 transition-all duration-300">
+  <header class="fixed top-0 left-0 w-full bg-white dark:bg-gray-800 shadow-md z-50 transition-all duration-300">
     <nav class="max-w-6xl mx-auto flex justify-between items-center p-4">
       <div class="text-2xl font-bold">Артем Шевченко</div>
 
@@ -48,16 +63,15 @@
         <li><a href="#skills" class="block py-2 hover:text-blue-600 transition">Навички</a></li>
         <li><a href="#contact" class="block py-2 hover:text-blue-600 transition">Контакти</a></li>
 
-        <!-- 🌞/🌙 Іконка перемикача -->
+        <!-- 🌞/🌙 Іконка -->
         <li>
           <button id="darkModeBtn" class="ml-0 md:ml-4 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition">
-            <!-- Сонце (видно у dark mode) -->
+            <!-- Сонце -->
             <svg id="sunIcon" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 hidden dark:block icon-rotate" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M12 3v2m0 14v2m9-9h-2M5 12H3m15.364-6.364l-1.414 1.414M6.05 17.95l-1.414 1.414m0-13.414l1.414 1.414M17.95 17.95l1.414 1.414M12 8a4 4 0 100 8 4 4 0 000-8z"/>
             </svg>
-
-            <!-- Місяць (видно у light mode) -->
+            <!-- Місяць -->
             <svg id="moonIcon" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 block dark:hidden icon-rotate" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z"/>
@@ -70,7 +84,7 @@
 
   <!-- 🏠 Головна -->
   <section id="home" class="py-24 flex flex-col justify-center items-center text-center pt-36 relative">
-    <div class="w-56 h-56 rounded-full p-[4px] bg-white shadow-2xl mb-6">
+    <div class="w-56 h-56 rounded-full p-[4px] bg-white dark:bg-gray-700 shadow-2xl mb-6">
       <img src="assets/img/photo.jpg" alt="Фото" class="w-full h-full rounded-full object-cover border-4 border-white">
     </div>
     <h1 class="text-3xl md:text-4xl font-bold mb-2">Артем Шевченко</h1>
@@ -82,8 +96,8 @@
     <h2 class="text-4xl font-semibold mb-6">Про себе</h2>
     <p class="max-w-2xl leading-relaxed">
       Привіт! Я — Артем, професійний шахіст та студент-програміст.
-      Поєдную аналітичне мислення шахів із логікою програмування, створюючи ефективні та продумані рішення як у коді, так і на шахівниці.
-      Навчаюся новим технологіям, розвиваю навички веброзробки й прагну поєднати інтелектуальну дисципліну шахів із творчим підходом у технологіях.
+      Поєдную аналітичне мислення шахів із логікою програмування, створюючи ефективні рішення як у коді, так і на шахівниці.
+      Навчаюся новим технологіям, розвиваю навички веброзробки та поєдную інтелектуальну дисципліну з творчістю.
     </p>
   </section>
 
@@ -91,8 +105,8 @@
   <section id="projects" class="py-12 flex flex-col justify-center items-center p-8 text-center relative">
     <h2 class="text-4xl font-semibold mb-6">Освіта</h2>
     <p>
-      2012–2023 — Херсонська загальноосвітня школа І–ІІІ ст. №44, закінчив із золотою медаллю<br>
-      2023–теперішній час — Херсонський державний університет, спеціальність «Комп’ютерні науки».
+      2012–2023 — Херсонська школа №44, золота медаль<br>
+      2023–теперішній час — Херсонський державний університет, «Комп’ютерні науки».
     </p>
   </section>
 
@@ -100,9 +114,8 @@
   <section id="chess" class="py-12 flex flex-col justify-center items-center p-8 text-center relative">
     <h2 class="text-4xl font-semibold mb-6">Шахи</h2>
     <p>
-      Маю 12-річний досвід гри в шахи, I спортивний розряд.<br>
-      Учасник і призер міських, обласних, всеукраїнських та міжнародних турнірів.<br>
-      Шахи сформували в мені стратегічне мислення, вміння планувати на кілька ходів уперед і швидко знаходити оптимальні рішення.
+      12-річний досвід, I спортивний розряд.<br>
+      Призер міських, обласних і міжнародних турнірів. Шахи розвинули стратегічне мислення та аналітичність, що допомагає у програмуванні.
     </p>
   </section>
 
@@ -110,9 +123,8 @@
   <section id="programming" class="py-12 flex flex-col justify-center items-center p-8 text-center relative">
     <h2 class="text-4xl font-semibold mb-6">Програмування</h2>
     <p>
-      Займаюся розробкою програмного забезпечення та веб-сайтів.<br>
-      Досвід роботи з Python, SQL, PHP, HTML/CSS.<br>
-      Реалізовував навчальні та курсові проєкти, включаючи системи нагадувань і інформаційні сервіси.
+      Займаюся створенням ПЗ та веб-сайтів. Досвід з Python, SQL, PHP, HTML/CSS.
+      Реалізовував навчальні проєкти, включаючи системи нагадувань і інформаційні сервіси.
     </p>
   </section>
 
@@ -120,19 +132,9 @@
   <section id="skills" class="py-12 flex flex-col justify-center items-center p-8 text-center relative">
     <h2 class="text-4xl font-semibold mb-6">Навички</h2>
     <p class="max-w-2xl leading-relaxed">
-      💻 <strong>Технічні:</strong><br>
-      Мови програмування: Python, PHP, C++<br>
-      Веброзробка: HTML, CSS, PHP<br>
-      Бази даних: MySQL, SQLite<br>
-      Контроль версій: Git, GitHub<br>
-      Алгоритми, структури даних, основи ШІ.<br><br>
-
-      ♟️ <strong>Шахові:</strong><br>
-      Рейтинг FIDE / Lichess, стратегічне мислення, аналітика партій, участь у міжнародних турнірах.<br><br>
-
-      🌐 <strong>Мовні:</strong><br>
-      Українська — рідна<br>
-      Англійська — досконало
+      💻 Технічні: Python, PHP, C++, HTML, CSS, SQL, Git, GitHub<br>
+      ♟️ Шахові: стратегія, аналітика, планування<br>
+      🌐 Мовні: Українська (рідна), Англійська (досконало)
     </p>
   </section>
 
@@ -144,7 +146,7 @@
     <p>Telegram: <a href="https://t.me/artem_chess" class="hover:underline">@artem_chess</a></p>
   </section>
 
-  <!-- 🔸 JS для перемикання теми -->
+  <!-- 🔸 JS -->
   <script>
     const btn = document.getElementById("darkModeBtn");
     const html = document.documentElement;
@@ -159,16 +161,15 @@
 
       gsap.to(isDark ? moon : sun, {
         opacity: 0,
-        scale: 0.6,
-        duration: 0.2,
+        scale: 0.7,
+        duration: 0.25,
         onComplete: () => {
           moon.classList.toggle("hidden", isDark);
           sun.classList.toggle("hidden", !isDark);
-          gsap.fromTo(isDark ? sun : moon, { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.25 });
+          gsap.fromTo(isDark ? sun : moon, { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.3 });
         },
       });
     });
   </script>
-
 </body>
 </html>
