@@ -1,175 +1,226 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Моє резюме — Артем Шевченко</title>
 
-  <!-- ✅ Tailwind (із class-based dark mode) -->
+  <!-- Встановлюємо тему до рендеру, щоб уникнути блимання -->
   <script>
-    tailwind = {
-      config: {
-        darkMode: "class",
-        theme: {
-          extend: {
-            colors: {
-              darkbg: "#0f172a",
-              darktext: "#f8fafc",
-            },
-          },
-        },
-      },
-    };
-  </script>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
-
-  <style>
-    html { scroll-behavior: smooth; }
-    .icon-rotate { transform-origin: center; }
-    body { transition: background-color 0.4s, color 0.4s; }
-  </style>
-
-  <!-- Завантаження теми до рендеру сторінки -->
-  <script>
-    (function() {
-      const savedTheme = localStorage.getItem("theme");
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
-        document.documentElement.classList.add("dark");
-      }
+    (function(){
+      try {
+        const saved = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (saved === 'dark' || (!saved && prefersDark)) {
+          document.documentElement.classList.add('dark');
+        }
+      } catch(e){}
     })();
   </script>
+
+  <!-- Tailwind CDN (залишив для utility-класів) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- GSAP для м'якої анімації (опційно) -->
+  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+
+  <!-- Надійні стилі теми через CSS-змінні -->
+  <style>
+    :root{
+      --bg: #ffffff;
+      --surface: #ffffff;
+      --text: #0f172a;
+      --muted: #374151;
+      --accent: #2563eb;
+    }
+    .dark {
+      --bg: #0b1220;      /* темний фон */
+      --surface: #0f172a; /* картки/хедер */
+      --text: #e6eef8;    /* основний текст */
+      --muted: #9aa6b2;
+      --accent: #60a5fa;
+    }
+
+    html,body{
+      height:100%;
+      background:var(--bg);
+      color:var(--text);
+      transition: background-color .35s ease, color .35s ease;
+    }
+
+    header{
+      background:var(--surface);
+      transition: background-color .35s ease;
+    }
+
+    a { color:var(--accent); }
+    a:hover { opacity:.85; }
+
+    /* кнопка іконки */
+    .theme-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:38px;
+      height:38px;
+      border-radius:999px;
+      background:transparent;
+      border:none;
+      cursor:pointer;
+    }
+    .theme-btn:hover { background: rgba(255,255,255,0.04); }
+
+    /* приховання/показ svg (за замовчуванням керує Tailwind-класи) */
+    .icon-hidden{ display:none !important; }
+    .icon-visible{ display:inline-block !important; }
+
+    /* трохи стилізації для секцій */
+    .section { padding:3rem 1rem; text-align:center; }
+    .maxw { max-width:72rem; margin:0 auto; padding:0 1rem; }
+  </style>
 </head>
+<body class="antialiased">
 
-<body class="bg-white text-gray-900 dark:bg-darkbg dark:text-darktext transition-colors duration-300">
+  <!-- Header -->
+  <header class="fixed top-0 left-0 w-full shadow z-50">
+    <nav class="maxw flex items-center justify-between p-4">
+      <div class="text-2xl font-semibold">Артем Шевченко</div>
 
-  <!-- 🔹 Хедер -->
-  <header class="fixed top-0 left-0 w-full bg-white dark:bg-gray-800 shadow-md z-50 transition-all duration-300">
-    <nav class="max-w-6xl mx-auto flex justify-between items-center p-4">
-      <div class="text-2xl font-bold">Артем Шевченко</div>
+      <div class="flex items-center gap-4">
+        <!-- навігація (скорочено) -->
+        <ul class="hidden md:flex items-center gap-6 text-sm">
+          <li><a href="#home">Головна</a></li>
+          <li><a href="#about">Про себе</a></li>
+          <li><a href="#projects">Освіта</a></li>
+          <li><a href="#chess">Шахи</a></li>
+          <li><a href="#programming">Програмування</a></li>
+          <li><a href="#skills">Навички</a></li>
+          <li><a href="#contact">Контакти</a></li>
+        </ul>
 
-      <button id="menu-btn" class="md:hidden text-3xl focus:outline-none">☰</button>
-
-      <ul id="menu" class="hidden md:flex flex-col md:flex-row items-center justify-center 
-                          space-y-4 md:space-y-0 md:space-x-6 absolute md:static bg-white dark:bg-gray-800 
-                          w-full left-0 top-16 md:w-auto shadow-md md:shadow-none text-center transition-all duration-300">
-
-        <li><a href="#home" class="block py-2 hover:text-blue-600 transition">Головна</a></li>
-        <li><a href="#about" class="block py-2 hover:text-blue-600 transition">Про себе</a></li>
-        <li><a href="#projects" class="block py-2 hover:text-blue-600 transition">Освіта</a></li>
-        <li><a href="#chess" class="block py-2 hover:text-blue-600 transition">Шахи</a></li>
-        <li><a href="#programming" class="block py-2 hover:text-blue-600 transition">Програмування</a></li>
-        <li><a href="#skills" class="block py-2 hover:text-blue-600 transition">Навички</a></li>
-        <li><a href="#contact" class="block py-2 hover:text-blue-600 transition">Контакти</a></li>
-
-        <!-- 🌞/🌙 Іконка -->
-        <li>
-          <button id="darkModeBtn" class="ml-0 md:ml-4 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition">
-            <!-- Сонце -->
-            <svg id="sunIcon" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 hidden dark:block icon-rotate" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M12 3v2m0 14v2m9-9h-2M5 12H3m15.364-6.364l-1.414 1.414M6.05 17.95l-1.414 1.414m0-13.414l1.414 1.414M17.95 17.95l1.414 1.414M12 8a4 4 0 100 8 4 4 0 000-8z"/>
-            </svg>
-            <!-- Місяць -->
-            <svg id="moonIcon" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 block dark:hidden icon-rotate" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z"/>
-            </svg>
-          </button>
-        </li>
-      </ul>
+        <!-- Кнопка теми (SVG-ікони) -->
+        <button id="themeToggle" class="theme-btn" aria-label="Перемкнути тему">
+          <!-- Місяць (світла тема -> показується коли немає .dark) -->
+          <svg id="moon" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 icon-visible" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+          </svg>
+          <!-- Сонце (темна тема -> показується коли є .dark) -->
+          <svg id="sun" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 icon-hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2m0 14v2M5 12H3m18 0h-2M6.343 6.343l-1.414-1.414M19.071 19.071l-1.414-1.414M6.343 17.657l-1.414 1.414M19.071 4.929l-1.414 1.414M12 8a4 4 0 100 8 4 4 0 000-8z"/>
+          </svg>
+        </button>
+      </div>
     </nav>
   </header>
 
-  <!-- 🏠 Головна -->
-  <section id="home" class="py-24 flex flex-col justify-center items-center text-center pt-36 relative">
-    <div class="w-56 h-56 rounded-full p-[4px] bg-white dark:bg-gray-700 shadow-2xl mb-6">
-      <img src="assets/img/photo.jpg" alt="Фото" class="w-full h-full rounded-full object-cover border-4 border-white">
-    </div>
-    <h1 class="text-3xl md:text-4xl font-bold mb-2">Артем Шевченко</h1>
-    <p class="text-xl mb-6 font-bold">Професійний шахіст та студент-програміст</p>
-  </section>
+  <!-- Контент (повний) -->
+  <main class="pt-24">
+    <section id="home" class="section">
+      <div class="maxw">
+        <div class="mx-auto w-56 h-56 rounded-full overflow-hidden mb-6" style="background:var(--surface);">
+          <img src="assets/img/photo.jpg" alt="Фото" style="width:100%;height:100%;object-fit:cover;display:block;">
+        </div>
+        <h1 class="text-3xl md:text-4xl font-bold mb-2">Артем Шевченко</h1>
+        <p class="text-lg font-semibold mb-6">Професійний шахіст та студент-програміст</p>
+      </div>
+    </section>
 
-  <!-- 🙋‍♂️ Про себе -->
-  <section id="about" class="py-12 flex flex-col justify-center items-center p-8 text-center relative">
-    <h2 class="text-4xl font-semibold mb-6">Про себе</h2>
-    <p class="max-w-2xl leading-relaxed">
-      Привіт! Я — Артем, професійний шахіст та студент-програміст.
-      Поєдную аналітичне мислення шахів із логікою програмування, створюючи ефективні рішення як у коді, так і на шахівниці.
-      Навчаюся новим технологіям, розвиваю навички веброзробки та поєдную інтелектуальну дисципліну з творчістю.
-    </p>
-  </section>
+    <section id="about" class="section">
+      <div class="maxw">
+        <h2 class="text-3xl font-semibold mb-4">Про себе</h2>
+        <p class="max-w-2xl mx-auto leading-relaxed">
+          Привіт! Я — Артем, професійний шахіст та студент-програміст.
+          Поєдную аналітичне мислення шахів із логікою програмування, створюючи ефективні та продумані рішення як у коді, так і на шахівниці.
+        </p>
+      </div>
+    </section>
 
-  <!-- 🎓 Освіта -->
-  <section id="projects" class="py-12 flex flex-col justify-center items-center p-8 text-center relative">
-    <h2 class="text-4xl font-semibold mb-6">Освіта</h2>
-    <p>
-      2012–2023 — Херсонська школа №44, золота медаль<br>
-      2023–теперішній час — Херсонський державний університет, «Комп’ютерні науки».
-    </p>
-  </section>
+    <section id="projects" class="section">
+      <div class="maxw">
+        <h2 class="text-3xl font-semibold mb-4">Освіта</h2>
+        <p>2012–2023 — Херсонська загальноосвітня школа І–ІІІ ст. №44 (золота медаль).<br>
+           2023–теперішній час — Херсонський державний університет, спеціальність «Комп’ютерні науки».</p>
+      </div>
+    </section>
 
-  <!-- ♟️ Шахи -->
-  <section id="chess" class="py-12 flex flex-col justify-center items-center p-8 text-center relative">
-    <h2 class="text-4xl font-semibold mb-6">Шахи</h2>
-    <p>
-      12-річний досвід, I спортивний розряд.<br>
-      Призер міських, обласних і міжнародних турнірів. Шахи розвинули стратегічне мислення та аналітичність, що допомагає у програмуванні.
-    </p>
-  </section>
+    <section id="chess" class="section">
+      <div class="maxw">
+        <h2 class="text-3xl font-semibold mb-4">Шахи</h2>
+        <p>12 років досвіду, I спортивний розряд. Учасник і призер міських, обласних, всеукраїнських та міжнародних турнірів.</p>
+      </div>
+    </section>
 
-  <!-- 💻 Програмування -->
-  <section id="programming" class="py-12 flex flex-col justify-center items-center p-8 text-center relative">
-    <h2 class="text-4xl font-semibold mb-6">Програмування</h2>
-    <p>
-      Займаюся створенням ПЗ та веб-сайтів. Досвід з Python, SQL, PHP, HTML/CSS.
-      Реалізовував навчальні проєкти, включаючи системи нагадувань і інформаційні сервіси.
-    </p>
-  </section>
+    <section id="programming" class="section">
+      <div class="maxw">
+        <h2 class="text-3xl font-semibold mb-4">Програмування</h2>
+        <p>Розробка ПЗ та вебсайтів. Досвід: Python, SQL, PHP, HTML/CSS. Реалізовував навчальні та курсові проєкти.</p>
+      </div>
+    </section>
 
-  <!-- ⚙️ Навички -->
-  <section id="skills" class="py-12 flex flex-col justify-center items-center p-8 text-center relative">
-    <h2 class="text-4xl font-semibold mb-6">Навички</h2>
-    <p class="max-w-2xl leading-relaxed">
-      💻 Технічні: Python, PHP, C++, HTML, CSS, SQL, Git, GitHub<br>
-      ♟️ Шахові: стратегія, аналітика, планування<br>
-      🌐 Мовні: Українська (рідна), Англійська (досконало)
-    </p>
-  </section>
+    <section id="skills" class="section">
+      <div class="maxw">
+        <h2 class="text-3xl font-semibold mb-4">Навички</h2>
+        <p class="max-w-2xl mx-auto leading-relaxed">
+          💻 Технічні: Python, PHP, C++, HTML, CSS, SQL, Git, GitHub.<br>
+          ♟️ Шахові: стратегія, аналіз партій, наставництво.<br>
+          🌐 Мови: Українська — рідна, Англійська — досконало.
+        </p>
+      </div>
+    </section>
 
-  <!-- 📞 Контакти -->
-  <section id="contact" class="py-12 p-8 flex flex-col justify-center items-center text-center relative">
-    <h2 class="text-4xl font-semibold mb-6">Контакти</h2>
-    <p>Email: <a href="mailto:saa75752@gmail.com" class="hover:underline">saa75752@gmail.com</a></p>
-    <p>LinkedIn: <a href="https://www.linkedin.com/in/artem-shevchenko-661087360" class="hover:underline">linkedin.com/in/artem-shevchenko-661087360</a></p>
-    <p>Telegram: <a href="https://t.me/artem_chess" class="hover:underline">@artem_chess</a></p>
-  </section>
+    <section id="contact" class="section">
+      <div class="maxw">
+        <h2 class="text-3xl font-semibold mb-4">Контакти</h2>
+        <p>Email: <a href="mailto:saa75752@gmail.com">saa75752@gmail.com</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/artem-shevchenko-661087360">linkedin.com/in/artem-shevchenko-661087360</a></p>
+        <p>Telegram: <a href="https://t.me/artem_chess">@artem_chess</a></p>
+      </div>
+    </section>
+  </main>
 
-  <!-- 🔸 JS -->
+  <!-- Скрипт перемикання теми -->
   <script>
-    const btn = document.getElementById("darkModeBtn");
-    const html = document.documentElement;
+    (function(){
+      const btn = document.getElementById('themeToggle');
+      const sun = document.getElementById('sun');
+      const moon = document.getElementById('moon');
+      const root = document.documentElement;
 
-    btn.addEventListener("click", () => {
-      html.classList.toggle("dark");
-      const isDark = html.classList.contains("dark");
-      localStorage.setItem("theme", isDark ? "dark" : "light");
+      // встановити видимість іконок за поточним станом
+      function syncIcons(){
+        const isDark = root.classList.contains('dark');
+        if (isDark){
+          sun.classList.remove('icon-hidden'); sun.classList.add('icon-visible');
+          moon.classList.remove('icon-visible'); moon.classList.add('icon-hidden');
+        } else {
+          moon.classList.remove('icon-hidden'); moon.classList.add('icon-visible');
+          sun.classList.remove('icon-visible'); sun.classList.add('icon-hidden');
+        }
+      }
 
-      const sun = document.getElementById("sunIcon");
-      const moon = document.getElementById("moonIcon");
+      // початкова синхронізація (коли DOM вже є)
+      syncIcons();
 
-      gsap.to(isDark ? moon : sun, {
-        opacity: 0,
-        scale: 0.7,
-        duration: 0.25,
-        onComplete: () => {
-          moon.classList.toggle("hidden", isDark);
-          sun.classList.toggle("hidden", !isDark);
-          gsap.fromTo(isDark ? sun : moon, { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.3 });
-        },
+      // клік: перемикаємо клас, зберігаємо, анімуємо іконки
+      btn.addEventListener('click', () => {
+        const nowDark = root.classList.toggle('dark');
+        try { localStorage.setItem('theme', nowDark ? 'dark' : 'light'); } catch(e){}
+
+        // плавна заміна іконок: quick fade via GSAP if available
+        if (window.gsap){
+          if (nowDark){
+            gsap.to(moon, { opacity: 0, scale: 0.7, duration: 0.18, onComplete: () => { syncIcons(); gsap.fromTo(sun, {opacity:0, scale:0.7}, {opacity:1, scale:1, duration:0.22}); }});
+          } else {
+            gsap.to(sun, { opacity: 0, scale: 0.7, duration: 0.18, onComplete: () => { syncIcons(); gsap.fromTo(moon, {opacity:0, scale:0.7}, {opacity:1, scale:1, duration:0.22}); }});
+          }
+        } else {
+          // fallback без GSAP
+          syncIcons();
+        }
       });
-    });
+
+      // корисна кнопка для дебагу (якщо щось не видно)
+      window._debugTheme = () => ({ dark: root.classList.contains('dark'), saved: localStorage.getItem('theme') });
+    })();
   </script>
 </body>
 </html>
