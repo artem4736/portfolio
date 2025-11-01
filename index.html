@@ -25,22 +25,22 @@
 
   <style>
     :root {
-      /* 🌤 Світла тема */
       --bg: #ffffff;
       --surface: #ffffff;
       --border: #dbeafe; /* ніжно-блакитна рамка */
       --text: #0f172a;
       --muted: #374151;
       --accent: #2563eb;
+      --accent-hover: #1d4ed8;
     }
     .dark {
-      /* 🌙 Темна тема */
       --bg: #0b1220;
       --surface: #111827;
       --border: #1e293b;
       --text: #e6eef8;
       --muted: #9aa6b2;
       --accent: #60a5fa;
+      --accent-hover: #93c5fd;
     }
 
     html, body {
@@ -55,8 +55,16 @@
       transition: background-color .35s ease;
     }
 
-    a { color: var(--accent); }
-    a:hover { opacity: .85; }
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      cursor: pointer;
+      transition: color .25s ease;
+    }
+    a:hover {
+      color: var(--accent-hover);
+      text-decoration: underline;
+    }
 
     .theme-btn {
       display: inline-flex;
@@ -78,7 +86,7 @@
       padding: 0;
       display: flex;
       justify-content: center;
-      margin-bottom: 8px; /* 🩵 2 мм між картками */
+      margin-bottom: 8px; /* 2 мм */
     }
     .section-card {
       background: var(--surface);
@@ -246,9 +254,9 @@
     <section id="contact" class="section">
       <div class="section-card">
         <h2 class="text-3xl font-semibold mb-4">Контакти</h2>
-        <p>Email: <a href="mailto:saa75752@gmail.com">saa75752@gmail.com</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/artem-shevchenko-661087360">linkedin.com/in/artem-shevchenko-661087360</a></p>
-        <p>Telegram: <a href="https://t.me/artem_chess">@artem_chess</a></p>
+        <p><a href="mailto:saa75752@gmail.com">📧 saa75752@gmail.com</a></p>
+        <p><a href="https://www.linkedin.com/in/artem-shevchenko-661087360" target="_blank">🔗 LinkedIn профіль</a></p>
+        <p><a href="https://t.me/artem_chess" target="_blank">💬 Telegram: @artem_chess</a></p>
       </div>
     </section>
 
@@ -290,6 +298,7 @@
   </script>
 </body>
 </html>
+
 
 
 
