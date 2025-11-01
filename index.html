@@ -33,7 +33,7 @@
     }
     .dark {
       --bg: #0b1220;
-      --surface: #0f172a;
+      --surface: #111827;
       --text: #e6eef8;
       --muted: #9aa6b2;
       --accent: #60a5fa;
@@ -60,8 +60,20 @@
     .icon-hidden{ display:none !important; }
     .icon-visible{ display:inline-block !important; }
 
-    .section { padding:3rem 1rem; text-align:center; }
-    .maxw { max-width:72rem; margin:0 auto; padding:0 1rem; }
+    .section { padding:3rem 1rem; display:flex; justify-content:center; }
+    .section-card {
+      background: var(--surface);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      border-radius: 1rem;
+      padding: 2.5rem;
+      max-width: 75rem;
+      width: 100%;
+      text-align: center;
+      transition: background-color .35s ease, box-shadow .35s ease;
+    }
+    .section-card:hover {
+      box-shadow: 0 10px 28px rgba(0,0,0,0.12);
+    }
   </style>
 </head>
 
@@ -69,7 +81,7 @@
 
   <!-- Header -->
   <header class="fixed top-0 left-0 w-full shadow z-50">
-    <nav class="maxw flex items-center justify-between p-4">
+    <nav class="max-w-6xl mx-auto flex items-center justify-between p-4">
       <div class="text-2xl font-semibold">Артем Шевченко</div>
 
       <div class="flex items-center gap-4">
@@ -98,49 +110,52 @@
   </header>
 
   <!-- Main -->
-  <main class="pt-24">
+  <main class="pt-28 space-y-10">
+
+    <!-- Головна -->
     <section id="home" class="section">
-      <div class="maxw">
-        <div class="mx-auto w-56 h-56 rounded-full overflow-hidden mb-6" style="background:var(--surface);">
-          <img src="assets/img/photo.jpg" alt="Фото" style="width:100%;height:100%;object-fit:cover;display:block;">
+      <div class="section-card">
+        <div class="mx-auto w-56 h-56 rounded-full overflow-hidden mb-6">
+          <img src="assets/img/photo.jpg" alt="Фото" style="width:100%;height:100%;object-fit:cover;">
         </div>
         <h1 class="text-3xl md:text-4xl font-bold mb-2">Артем Шевченко</h1>
         <p class="text-lg font-semibold mb-6">Професійний шахіст та студент-програміст</p>
       </div>
     </section>
 
+    <!-- Про себе -->
     <section id="about" class="section">
-  <div class="card-section">
-    <h2 class="text-3xl font-semibold mb-4">Про себе</h2>
-    <p class="leading-relaxed max-w-3xl mx-auto">
+      <div class="section-card">
+        <h2 class="text-3xl font-semibold mb-4">Про себе</h2>
+        <p class="leading-relaxed max-w-3xl mx-auto">
           Привіт! Я — Артем, професійний шахіст і студент-програміст.
-          Поєдную аналітичне мислення шахів із логікою програмування, створюючи ефективні та продумані рішення як у коді, так і на шахівниці.
+          Поєдную аналітичне мислення шахів із логікою програмування, створюючи ефективні рішення як у коді, так і на шахівниці.
           Прагну поєднати інтелектуальну дисципліну з творчим підходом у сфері технологій.
         </p>
       </div>
     </section>
 
+    <!-- Освіта -->
     <section id="projects" class="section">
-      <div class="maxw">
+      <div class="section-card">
         <h2 class="text-3xl font-semibold mb-4">Освіта</h2>
         <p>2023–теперішній час — Херсонський державний університет, спеціальність «Комп’ютерні науки»<br>
            2012–2023 — Херсонська ЗОШ №44, закінчив із золотою медаллю</p>
       </div>
     </section>
 
-    <!-- Об’єднана секція досвіду -->
+    <!-- Досвід -->
     <section id="experience" class="section">
-      <div class="maxw">
-        <h2 class="text-3xl font-semibold mb-4">Досвід</h2>
-        <div class="text-left max-w-3xl mx-auto leading-relaxed space-y-6">
+      <div class="section-card text-left">
+        <h2 class="text-3xl font-semibold mb-4 text-center">Досвід</h2>
+        <div class="space-y-6">
 
           <div>
             <h3 class="text-2xl font-semibold mb-2">♟️ Шахи</h3>
             <p>
               Маю понад 12 років досвіду гри в шахи, I спортивний розряд.
               Учасник і призер міських, обласних, всеукраїнських та міжнародних турнірів.
-              Шахи сформували в мені стратегічне та логічне мислення, вміння планувати наперед і знаходити оптимальні рішення.
-              Ці навички активно використовую в програмуванні.
+              Шахи сформували в мені стратегічне мислення, аналітичність і вміння швидко приймати рішення.
             </p>
           </div>
 
@@ -150,7 +165,6 @@
               Займаюся розробкою програмного забезпечення та вебсайтів.
               Досвід роботи з Python, PHP, C++, HTML/CSS, SQL.
               Реалізовував навчальні проєкти: системи нагадувань, бази даних, інформаційні сервіси.
-              Поєдную аналітичність із креативністю, створюючи структурні й функціональні рішення.
             </p>
           </div>
 
@@ -158,58 +172,58 @@
       </div>
     </section>
 
+    <!-- Навички -->
     <section id="skills" class="section">
-  <div class="maxw">
-    <h2 class="text-3xl font-semibold mb-8">Навички</h2>
+      <div class="section-card">
+        <h2 class="text-3xl font-semibold mb-8">Навички</h2>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-left max-w-5xl mx-auto">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-left max-w-5xl mx-auto">
 
-      <!-- Колонка 1 -->
-      <div class="p-6 rounded-2xl shadow-md bg-[var(--surface)] transition hover:shadow-lg">
-        <h3 class="text-xl font-semibold mb-3">💻 Технічні</h3>
-        <ul class="space-y-1 text-[var(--muted)]">
-          <li>Python, PHP, C++</li>
-          <li>HTML / CSS, SQL</li>
-          <li>Git / GitHub</li>
-          <li>Алгоритми та структури даних</li>
-          <li>Основи штучного інтелекту</li>
-        </ul>
+          <div class="p-6 rounded-2xl shadow-md bg-[var(--surface)]">
+            <h3 class="text-xl font-semibold mb-3">💻 Технічні</h3>
+            <ul class="space-y-1 text-[var(--muted)]">
+              <li>Python, PHP, C++</li>
+              <li>HTML / CSS, SQL</li>
+              <li>Git / GitHub</li>
+              <li>Алгоритми та структури даних</li>
+              <li>Основи штучного інтелекту</li>
+            </ul>
+          </div>
+
+          <div class="p-6 rounded-2xl shadow-md bg-[var(--surface)]">
+            <h3 class="text-xl font-semibold mb-3">♟️ Шахові</h3>
+            <ul class="space-y-1 text-[var(--muted)]">
+              <li>Рейтинг FIDE / Lichess</li>
+              <li>Стратегічне мислення</li>
+              <li>Аналіз партій</li>
+              <li>Планування та концентрація</li>
+              <li>Наставництво молодих гравців</li>
+            </ul>
+          </div>
+
+          <div class="p-6 rounded-2xl shadow-md bg-[var(--surface)]">
+            <h3 class="text-xl font-semibold mb-3">🌐 Мовні</h3>
+            <ul class="space-y-1 text-[var(--muted)]">
+              <li>Українська — рідна</li>
+              <li>Англійська — вільно</li>
+              <li>Російська — вільно</li>
+            </ul>
+          </div>
+
+        </div>
       </div>
+    </section>
 
-      <!-- Колонка 2 -->
-      <div class="p-6 rounded-2xl shadow-md bg-[var(--surface)] transition hover:shadow-lg">
-        <h3 class="text-xl font-semibold mb-3">♟️ Шахові</h3>
-        <ul class="space-y-1 text-[var(--muted)]">
-          <li>Рейтинг FIDE / Lichess</li>
-          <li>Стратегічне мислення</li>
-          <li>Аналіз партій</li>
-          <li>Планування та концентрація</li>
-          <li>Наставництво молодих гравців</li>
-        </ul>
-      </div>
-
-      <!-- Колонка 3 -->
-      <div class="p-6 rounded-2xl shadow-md bg-[var(--surface)] transition hover:shadow-lg">
-        <h3 class="text-xl font-semibold mb-3">🌐 Мовні</h3>
-        <ul class="space-y-1 text-[var(--muted)]">
-          <li>Українська — рідна</li>
-          <li>Англійська — вільно</li>
-          <li>Російська — вільно</li>
-        </ul>
-      </div>
-
-    </div>
-  </div>
-</section>
-
+    <!-- Контакти -->
     <section id="contact" class="section">
-      <div class="maxw">
+      <div class="section-card">
         <h2 class="text-3xl font-semibold mb-4">Контакти</h2>
         <p>Email: <a href="mailto:saa75752@gmail.com">saa75752@gmail.com</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/artem-shevchenko-661087360">linkedin.com/in/artem-shevchenko-661087360</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/artem-shevchenko-661087360">linkedin.com/in/artem-shevchenко-661087360</a></p>
         <p>Telegram: <a href="https://t.me/artem_chess">@artem_chess</a></p>
       </div>
     </section>
+
   </main>
 
   <!-- Скрипт перемикання теми -->
@@ -222,13 +236,10 @@
 
       function syncIcons(){
         const isDark = root.classList.contains('dark');
-        if (isDark){
-          sun.classList.remove('icon-hidden'); sun.classList.add('icon-visible');
-          moon.classList.remove('icon-visible'); moon.classList.add('icon-hidden');
-        } else {
-          moon.classList.remove('icon-hidden'); moon.classList.add('icon-visible');
-          sun.classList.remove('icon-visible'); sun.classList.add('icon-hidden');
-        }
+        sun.classList.toggle('icon-visible', isDark);
+        sun.classList.toggle('icon-hidden', !isDark);
+        moon.classList.toggle('icon-visible', !isDark);
+        moon.classList.toggle('icon-hidden', isDark);
       }
       syncIcons();
 
@@ -236,17 +247,16 @@
         const nowDark = root.classList.toggle('dark');
         try { localStorage.setItem('theme', nowDark ? 'dark' : 'light'); } catch(e){}
         if (window.gsap){
-          if (nowDark){
-            gsap.to(moon, {opacity:0, scale:0.7, duration:0.18, onComplete:()=>{syncIcons(); gsap.fromTo(sun,{opacity:0,scale:0.7},{opacity:1,scale:1,duration:0.22});}});
-          } else {
-            gsap.to(sun, {opacity:0, scale:0.7, duration:0.18, onComplete:()=>{syncIcons(); gsap.fromTo(moon,{opacity:0,scale:0.7},{opacity:1,scale:1,duration:0.22});}});
-          }
+          const fadeOut = nowDark ? moon : sun;
+          const fadeIn = nowDark ? sun : moon;
+          gsap.to(fadeOut, {opacity:0, scale:0.7, duration:0.18, onComplete:()=>{syncIcons(); gsap.fromTo(fadeIn,{opacity:0,scale:0.7},{opacity:1,scale:1,duration:0.22});}});
         } else syncIcons();
       });
     })();
   </script>
 </body>
 </html>
+
 
 
 
