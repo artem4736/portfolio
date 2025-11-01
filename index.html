@@ -25,54 +25,74 @@
 
   <style>
     :root {
-  /* 🌤 Світла тема — м’який блакитно-білий відтінок */
-  --bg: #f4f8fb;        /* фон сторінки */
-  --surface: #f9fcff;   /* фон карток (майже білий) */
-  --text: #0f172a;      /* основний текст */
-  --muted: #374151;     /* приглушений текст */
-  --accent: #2563eb;    /* акцент (посилання, кнопки) */
-}
-.dark {
-  /* 🌙 Темна тема — без змін */
-  --bg: #0b1220;
-  --surface: #111827;
-  --text: #e6eef8;
-  --muted: #9aa6b2;
-  --accent: #60a5fa;
-}
-    html,body{
-      height:100%;
-      background:var(--bg);
-      color:var(--text);
+      /* 🌤 Світла тема — білий фон + ніжна блакитна рамка */
+      --bg: #ffffff;
+      --surface: #ffffff;
+      --border: #dbeafe; /* світло-блакитна рамка */
+      --text: #0f172a;
+      --muted: #374151;
+      --accent: #2563eb;
+    }
+
+    .dark {
+      /* 🌙 Темна тема */
+      --bg: #0b1220;
+      --surface: #111827;
+      --border: #1e293b;
+      --text: #e6eef8;
+      --muted: #9aa6b2;
+      --accent: #60a5fa;
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--bg);
+      color: var(--text);
       transition: background-color .35s ease, color .35s ease;
     }
 
-    header{ background:var(--surface); transition: background-color .35s ease; }
-
-    a { color:var(--accent); }
-    a:hover { opacity:.85; }
-
-    .theme-btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      width:38px; height:38px;
-      border-radius:999px; background:transparent; border:none; cursor:pointer;
+    header {
+      background: var(--surface);
+      transition: background-color .35s ease;
     }
+
+    a { color: var(--accent); }
+    a:hover { opacity: .85; }
+
+    .theme-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+    }
+
     .theme-btn:hover { background: rgba(255,255,255,0.04); }
 
-    .icon-hidden{ display:none !important; }
-    .icon-visible{ display:inline-block !important; }
+    .icon-hidden { display: none !important; }
+    .icon-visible { display: inline-block !important; }
 
     /* Картковий стиль секцій */
-    .section { padding:0; display:flex; justify-content:center; }
+    .section {
+      padding: 0;
+      display: flex;
+      justify-content: center;
+    }
+
     .section-card {
       background: var(--surface);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
       border-radius: 0;
       padding: 3rem 1rem;
       max-width: 75rem;
       width: 100%;
       text-align: center;
-      transition: background-color .35s ease, box-shadow .35s ease;
+      transition: background-color .35s ease, box-shadow .35s ease, border-color .35s ease;
     }
 
     main > section { margin: 0; }
@@ -152,13 +172,12 @@
       <div class="section-card text-left">
         <h2 class="text-3xl font-semibold mb-4 text-center">Досвід</h2>
         <div class="space-y-6">
-
           <div>
             <h3 class="text-2xl font-semibold mb-2">♟️ Шахи</h3>
             <p>
               Маю понад 12 років досвіду гри в шахи, I спортивний розряд.
               Учасник і призер міських, обласних, всеукраїнських та міжнародних турнірів.
-              Шахи сформували в мені стратегічне та логічне мислення, вміння планувати наперед і швидко знаходити рішення.
+              Шахи сформували в мені стратегічне мислення, вміння планувати наперед і швидко знаходити рішення.
             </p>
           </div>
 
@@ -170,7 +189,6 @@
               Реалізовував навчальні проєкти: системи нагадувань, бази даних, інформаційні сервіси.
             </p>
           </div>
-
         </div>
       </div>
     </section>
@@ -181,8 +199,7 @@
         <h2 class="text-3xl font-semibold mb-8">Навички</h2>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-left max-w-5xl mx-auto">
-
-          <div class="p-6 rounded-2xl shadow bg-[var(--surface)]">
+          <div class="p-6 rounded-2xl shadow bg-[var(--surface)] border border-[var(--border)]">
             <h3 class="text-xl font-semibold mb-3">💻 Технічні</h3>
             <ul class="space-y-1 text-[var(--muted)]">
               <li>Python, PHP, C++</li>
@@ -193,7 +210,7 @@
             </ul>
           </div>
 
-          <div class="p-6 rounded-2xl shadow bg-[var(--surface)]">
+          <div class="p-6 rounded-2xl shadow bg-[var(--surface)] border border-[var(--border)]">
             <h3 class="text-xl font-semibold mb-3">♟️ Шахові</h3>
             <ul class="space-y-1 text-[var(--muted)]">
               <li>Рейтинг FIDE / Lichess</li>
@@ -204,7 +221,7 @@
             </ul>
           </div>
 
-          <div class="p-6 rounded-2xl shadow bg-[var(--surface)]">
+          <div class="p-6 rounded-2xl shadow bg-[var(--surface)] border border-[var(--border)]">
             <h3 class="text-xl font-semibold mb-3">🌐 Мовні</h3>
             <ul class="space-y-1 text-[var(--muted)]">
               <li>Українська — рідна</li>
@@ -212,7 +229,6 @@
               <li>Російська — вільно</li>
             </ul>
           </div>
-
         </div>
       </div>
     </section>
@@ -226,7 +242,6 @@
         <p>Telegram: <a href="https://t.me/artem_chess">@artem_chess</a></p>
       </div>
     </section>
-
   </main>
 
   <!-- Скрипт теми -->
@@ -252,15 +267,13 @@
         if (window.gsap){
           const fadeOut = nowDark ? moon : sun;
           const fadeIn = nowDark ? sun : moon;
-          gsap.to(fadeOut, {opacity:0, scale:0.7, duration:0.18, onComplete:()=>{syncIcons(); gsap.fromTo(fadeIn,{opacity:0,scale:0.7},{opacity:1,scale:1,duration:0.22});}});  
+          gsap.to(fadeOut, {opacity:0, scale:0.7, duration:0.18, onComplete:()=>{syncIcons(); gsap.fromTo(fadeIn,{opacity:0,scale:0.7},{opacity:1,scale:1,duration:0.22});}});
         } else syncIcons();
       });
     })();
   </script>
 </body>
 </html>
-
-
 
 
 
