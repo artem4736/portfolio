@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Моє резюме — Артем Шевченко</title>
 
-  <!-- Встановлюємо тему до рендеру -->
+  <!-- Збереження теми -->
   <script>
     (function(){
       try {
@@ -45,6 +45,7 @@
       color:var(--text);
       transition: background-color .35s ease, color .35s ease;
     }
+
     header{ background:var(--surface); transition: background-color .35s ease; }
 
     a { color:var(--accent); }
@@ -60,19 +61,24 @@
     .icon-hidden{ display:none !important; }
     .icon-visible{ display:inline-block !important; }
 
-    .section { padding:3rem 1rem; display:flex; justify-content:center; }
+    .section { padding:2rem 1rem; display:flex; justify-content:center; }
     .section-card {
       background: var(--surface);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      box-shadow: 0 5px 18px rgba(0,0,0,0.07);
       border-radius: 1rem;
-      padding: 2.5rem;
+      padding: 2rem;
       max-width: 75rem;
       width: 100%;
       text-align: center;
       transition: background-color .35s ease, box-shadow .35s ease;
     }
     .section-card:hover {
-      box-shadow: 0 10px 28px rgba(0,0,0,0.12);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.1);
+    }
+
+    /* Менша відстань між секціями */
+    main > section + section {
+      margin-top: 1rem;
     }
   </style>
 </head>
@@ -110,17 +116,15 @@
   </header>
 
   <!-- Main -->
-  <main class="pt-28 space-y-10">
+  <main class="pt-28 space-y-6">
 
-    <!-- Головна -->
-    <section id="home" class="section">
-      <div class="section-card">
-        <div class="mx-auto w-56 h-56 rounded-full overflow-hidden mb-6">
-          <img src="assets/img/photo.jpg" alt="Фото" style="width:100%;height:100%;object-fit:cover;">
-        </div>
-        <h1 class="text-3xl md:text-4xl font-bold mb-2">Артем Шевченко</h1>
-        <p class="text-lg font-semibold mb-6">Професійний шахіст та студент-програміст</p>
+    <!-- Головна без картки -->
+    <section id="home" class="py-16 text-center">
+      <div class="mx-auto w-56 h-56 rounded-full overflow-hidden mb-6 shadow-lg">
+        <img src="assets/img/photo.jpg" alt="Фото" style="width:100%;height:100%;object-fit:cover;">
       </div>
+      <h1 class="text-3xl md:text-4xl font-bold mb-2">Артем Шевченко</h1>
+      <p class="text-lg font-semibold mb-4">Професійний шахіст та студент-програміст</p>
     </section>
 
     <!-- Про себе -->
@@ -177,9 +181,9 @@
       <div class="section-card">
         <h2 class="text-3xl font-semibold mb-8">Навички</h2>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-left max-w-5xl mx-auto">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-left max-w-5xl mx-auto">
 
-          <div class="p-6 rounded-2xl shadow-md bg-[var(--surface)]">
+          <div class="p-6 rounded-2xl shadow bg-[var(--surface)]">
             <h3 class="text-xl font-semibold mb-3">💻 Технічні</h3>
             <ul class="space-y-1 text-[var(--muted)]">
               <li>Python, PHP, C++</li>
@@ -190,7 +194,7 @@
             </ul>
           </div>
 
-          <div class="p-6 rounded-2xl shadow-md bg-[var(--surface)]">
+          <div class="p-6 rounded-2xl shadow bg-[var(--surface)]">
             <h3 class="text-xl font-semibold mb-3">♟️ Шахові</h3>
             <ul class="space-y-1 text-[var(--muted)]">
               <li>Рейтинг FIDE / Lichess</li>
@@ -201,7 +205,7 @@
             </ul>
           </div>
 
-          <div class="p-6 rounded-2xl shadow-md bg-[var(--surface)]">
+          <div class="p-6 rounded-2xl shadow bg-[var(--surface)]">
             <h3 class="text-xl font-semibold mb-3">🌐 Мовні</h3>
             <ul class="space-y-1 text-[var(--muted)]">
               <li>Українська — рідна</li>
@@ -219,14 +223,14 @@
       <div class="section-card">
         <h2 class="text-3xl font-semibold mb-4">Контакти</h2>
         <p>Email: <a href="mailto:saa75752@gmail.com">saa75752@gmail.com</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/artem-shevchenko-661087360">linkedin.com/in/artem-shevchenко-661087360</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/artem-shevchenko-661087360">linkedin.com/in/artem-shevchenko-661087360</a></p>
         <p>Telegram: <a href="https://t.me/artem_chess">@artem_chess</a></p>
       </div>
     </section>
 
   </main>
 
-  <!-- Скрипт перемикання теми -->
+  <!-- Скрипт теми -->
   <script>
     (function(){
       const btn = document.getElementById('themeToggle');
@@ -256,6 +260,7 @@
   </script>
 </body>
 </html>
+
 
 
 
