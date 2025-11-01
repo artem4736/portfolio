@@ -25,13 +25,15 @@
 
   <style>
     :root{
-      --bg: #ffffff;
-      --surface: #ffffff;
-      --text: #0f172a;
-      --muted: #374151;
-      --accent: #2563eb;
+      /* 🌤 Світла тема — ніжно-блакитна */
+      --bg: #eaf6ff;        /* фон сторінки */
+      --surface: #f5fbff;   /* фон карток */
+      --text: #0f172a;      /* основний текст */
+      --muted: #374151;     /* приглушений текст */
+      --accent: #2563eb;    /* акцент (посилання, кнопки) */
     }
     .dark {
+      /* 🌙 Темна тема — без змін */
       --bg: #0b1220;
       --surface: #111827;
       --text: #e6eef8;
@@ -251,13 +253,14 @@
         if (window.gsap){
           const fadeOut = nowDark ? moon : sun;
           const fadeIn = nowDark ? sun : moon;
-          gsap.to(fadeOut, {opacity:0, scale:0.7, duration:0.18, onComplete:()=>{syncIcons(); gsap.fromTo(fadeIn,{opacity:0,scale:0.7},{opacity:1,scale:1,duration:0.22});}});
+          gsap.to(fadeOut, {opacity:0, scale:0.7, duration:0.18, onComplete:()=>{syncIcons(); gsap.fromTo(fadeIn,{opacity:0,scale:0.7},{opacity:1,scale:1,duration:0.22});}});  
         } else syncIcons();
       });
     })();
   </script>
 </body>
 </html>
+
 
 
 
