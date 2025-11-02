@@ -49,21 +49,10 @@
       transition: background-color .35s ease, color .35s ease;
     }
 
-    header {
-      background: var(--surface);
-      transition: background-color .35s ease;
-    }
+    header { background: var(--surface); transition: background-color .35s ease; }
 
-    a {
-      color: var(--accent);
-      text-decoration: none;
-      transition: color .25s ease;
-    }
-
-    a:hover {
-      color: var(--accent-hover);
-      text-decoration: underline;
-    }
+    a { color: var(--accent); text-decoration: none; transition: color .25s ease; }
+    a:hover { color: var(--accent-hover); text-decoration: underline; }
 
     .theme-btn {
       display: inline-flex;
@@ -77,11 +66,7 @@
       cursor: pointer;
       transition: background-color .25s ease, color .25s ease;
     }
-
-    .theme-btn:hover {
-      background: var(--accent);
-      color: white;
-    }
+    .theme-btn:hover { background: var(--accent); color: white; }
 
     .icon-hidden { display: none !important; }
     .icon-visible { display: inline-block !important; }
@@ -104,10 +89,7 @@
       text-align: justify;
       transition: background-color .35s ease, box-shadow .35s ease, border-color .35s ease;
     }
-
-    .section-card:hover {
-      border-color: var(--accent);
-    }
+    .section-card:hover { border-color: var(--accent); }
 
     main > section + section { margin-top: 0; }
 
@@ -120,7 +102,6 @@
       height: 30px;
       cursor: pointer;
     }
-
     .burger span {
       height: 3px;
       background: var(--text);
@@ -230,32 +211,25 @@
         <div class="space-y-6 max-w-4xl mx-auto">
           <div>
             <h3 class="text-2xl font-semibold mb-2">♟️ Шахи</h3>
-            <p>Маю 12-річний досвід гри в шахи, I спортивний розряд. 
+            <p>
+              Маю 12-річний досвід гри в шахи, I спортивний розряд. 
               Учасник і призер міських, обласних, всеукраїнських та міжнародних турнірів. 
-              За роки гри здобув понад 30 медалей, грамот і кубків, серед яких перемоги та призові місця на всеукраїнських і міжнародних змаганнях.
-              <br><br>Нижче подано кілька найбільш значущих відзнак:
+              За роки гри здобув понад 30 медалей, грамот і кубків. Нижче — лише частина найвагоміших досягнень:
             </p>
 
             <!-- Галерея -->
             <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2 w-full max-w-6xl mx-auto">
-              <img src="assets/img/award1.jpg" class="rounded-xl shadow-md object-cover w-full h-48 hover:scale-105 transition" alt="">
-              <img src="assets/img/award2.jpg" class="rounded-xl shadow-md object-cover w-full h-48 hover:scale-105 transition" alt="">
-              <img src="assets/img/award3.jpg" class="rounded-xl shadow-md object-cover w-full h-48 hover:scale-105 transition" alt="">
-              <img src="assets/img/award4.jpg" class="rounded-xl shadow-md object-cover w-full h-48 hover:scale-105 transition" alt="">
-              <img src="assets/img/award5.jpg" class="rounded-xl shadow-md object-cover w-full h-48 hover:scale-105 transition" alt="">
-              <img src="assets/img/award6.jpg" class="rounded-xl shadow-md object-cover w-full h-48 hover:scale-105 transition" alt="">
-              <img src="assets/img/award7.jpg" class="rounded-xl shadow-md object-cover w-full h-48 hover:scale-105 transition" alt="">
-              <img src="assets/img/award8.jpg" class="rounded-xl shadow-md object-cover w-full h-48 hover:scale-105 transition" alt="">
-              <img src="assets/img/award9.jpg" class="rounded-xl shadow-md object-cover w-full h-48 hover:scale-105 transition" alt="">
-              <img src="assets/img/award10.jpg" class="rounded-xl shadow-md object-cover w-full h-48 hover:scale-105 transition" alt="">
+              <img src="assets/img/award1.jpg" class="award-img rounded-xl shadow-md object-cover w-full h-48 hover:scale-105 transition cursor-pointer" alt="">
+              <img src="assets/img/award2.jpg" class="award-img rounded-xl shadow-md object-cover w-full h-48 hover:scale-105 transition cursor-pointer" alt="">
+              <img src="assets/img/award3.jpg" class="award-img rounded-xl shadow-md object-cover w-full h-48 hover:scale-105 transition cursor-pointer" alt="">
+              <img src="assets/img/award4.jpg" class="award-img rounded-xl shadow-md object-cover w-full h-48 hover:scale-105 transition cursor-pointer" alt="">
+              <img src="assets/img/award5.jpg" class="award-img rounded-xl shadow-md object-cover w-full h-48 hover:scale-105 transition cursor-pointer" alt="">
+              <img src="assets/img/award6.jpg" class="award-img rounded-xl shadow-md object-cover w-full h-48 hover:scale-105 transition cursor-pointer" alt="">
+              <img src="assets/img/award7.jpg" class="award-img rounded-xl shadow-md object-cover w-full h-48 hover:scale-105 transition cursor-pointer" alt="">
+              <img src="assets/img/award8.jpg" class="award-img rounded-xl shadow-md object-cover w-full h-48 hover:scale-105 transition cursor-pointer" alt="">
+              <img src="assets/img/award9.jpg" class="award-img rounded-xl shadow-md object-cover w-full h-48 hover:scale-105 transition cursor-pointer" alt="">
+              <img src="assets/img/award10.jpg" class="award-img rounded-xl shadow-md object-cover w-full h-48 hover:scale-105 transition cursor-pointer" alt="">
             </div>
-          </div>
-
-          <div>
-            <h3 class="text-2xl font-semibold mb-2">💻 Програмування</h3>
-            <p>Досвід роботи з Python, SQL, PHP, HTML/CSS. 
-              Реалізовував навчальні та курсові проєкти, включаючи системи нагадувань і інформаційні сервіси.
-            </p>
           </div>
         </div>
       </div>
@@ -301,11 +275,16 @@
       <div class="section-card text-center">
         <h2 class="text-3xl font-semibold mb-4">Контакти</h2>
         <p>Email: <a href="mailto:saa75752@gmail.com">saa75752@gmail.com</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/artem-shevchenko-661087360" target="_blank">linkedin.com/in/artem-shevченко-661087360</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/artem-shevchenko-661087360" target="_blank">linkedin.com/in/artem-shevchenко-661087360</a></p>
         <p>Telegram: <a href="https://t.me/artem_chess" target="_blank">@artem_chess</a></p>
       </div>
     </section>
   </main>
+
+  <!-- Модальне фото -->
+  <div id="lightbox" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50">
+    <img id="lightbox-img" src="" alt="Фото грамоти" class="max-w-full max-h-[90vh] rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700">
+  </div>
 
   <script>
     // Темна тема
@@ -337,9 +316,25 @@
     const burger=document.getElementById('burger');
     const menu=document.querySelector('nav ul');
     burger.addEventListener('click',()=>{ menu.classList.toggle('show'); });
+
+    // Lightbox
+    const lightbox=document.getElementById('lightbox');
+    const lightboxImg=document.getElementById('lightbox-img');
+    document.querySelectorAll('.award-img').forEach(img=>{
+      img.addEventListener('click',()=>{
+        lightboxImg.src=img.src;
+        lightbox.classList.remove('hidden');
+        lightbox.classList.add('flex');
+      });
+    });
+    lightbox.addEventListener('click',()=>{
+      lightbox.classList.add('hidden');
+      lightbox.classList.remove('flex');
+    });
   </script>
 </body>
 </html>
+
 
 
 
