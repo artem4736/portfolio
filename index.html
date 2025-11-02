@@ -23,7 +23,7 @@
   <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
 
   <style>
-    :root{
+    :root {
       --bg: #ffffff;
       --surface: #ffffff;
       --border: #cfe6ff;
@@ -41,44 +41,110 @@
       --accent: #3b82f6;
       --accent-hover: #60a5fa;
     }
-    html,body{
-      height:100%;
-      background:var(--bg);
-      color:var(--text);
+
+    html, body {
+      height: 100%;
+      background: var(--bg);
+      color: var(--text);
       transition: background-color .35s ease, color .35s ease;
     }
-    header{ background:var(--surface); transition: background-color .35s ease; }
-    a{ color:var(--accent); text-decoration:none; transition:color .25s ease; }
-    a:hover{ color:var(--accent-hover); text-decoration:underline; }
-    .theme-btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      width:38px; height:38px; border-radius:999px; background:transparent; border:none; cursor:pointer;
+
+    header {
+      background: var(--surface);
+      transition: background-color .35s ease;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color .25s ease;
+    }
+
+    a:hover {
+      color: var(--accent-hover);
+      text-decoration: underline;
+    }
+
+    .theme-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
       transition: background-color .25s ease, color .25s ease;
     }
-    .theme-btn:hover{ background:var(--accent); color:white; }
-    .icon-hidden{ display:none !important; }
-    .icon-visible{ display:inline-block !important; }
-    .section{ padding:0; display:flex; justify-content:center; margin-bottom:8px; }
-    .section-card{
-      background:var(--surface); border:1px solid var(--border); box-shadow:0 2px 6px rgba(0,0,0,0.04);
-      border-radius:0; padding:3rem 1rem; max-width:75rem; width:100%; text-align:justify;
+
+    .theme-btn:hover {
+      background: var(--accent);
+      color: white;
+    }
+
+    .icon-hidden { display: none !important; }
+    .icon-visible { display: inline-block !important; }
+
+    .section {
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 8px;
+    }
+
+    .section-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+      border-radius: 0;
+      padding: 3rem 1rem;
+      max-width: 75rem;
+      width: 100%;
+      text-align: justify;
       transition: background-color .35s ease, box-shadow .35s ease, border-color .35s ease;
     }
-    .section-card:hover{ border-color: var(--accent); }
-    main>section+section{ margin-top:0; }
+
+    .section-card:hover {
+      border-color: var(--accent);
+    }
+
+    main > section + section { margin-top: 0; }
+
     /* Бургер меню */
-    .burger{
-      display:none; flex-direction:column; justify-content:center; width:30px; height:30px; cursor:pointer;
+    .burger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
     }
-    .burger span{
-      height:3px; background:var(--text); margin:4px 0; border-radius:2px; transition:0.3s;
+
+    .burger span {
+      height: 3px;
+      background: var(--text);
+      margin: 4px 0;
+      border-radius: 2px;
+      transition: 0.3s;
     }
-    @media(max-width:767px){
-      .burger{ display:flex; }
-      nav ul{ display:none; flex-direction:column; background:var(--surface); position:absolute; top:60px; right:10px; border:1px solid var(--border); border-radius:8px; box-shadow:0 4px 10px rgba(0,0,0,0.1); }
-      nav ul.show{ display:flex; }
-      header nav{ display:flex; justify-content:space-between; align-items:center; }
-      header nav > .flex{ order:-1; flex-direction:row; gap:8px; }
+
+    @media(max-width: 767px) {
+      .burger { display: flex; }
+      nav ul {
+        display: none;
+        flex-direction: column;
+        background: var(--surface);
+        position: absolute;
+        top: 60px;
+        right: 10px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      }
+      nav ul.show { display: flex; }
+      header nav { display: flex; justify-content: space-between; align-items: center; }
+      header nav > .flex { order: -1; flex-direction: row; gap: 8px; }
     }
   </style>
 </head>
@@ -139,7 +205,7 @@
           Привіт! Я — Артем, професійний шахіст і студент-програміст. 
           Поєдную аналітичне мислення шахів із логікою програмування, створюючи ефективні та продумані рішення як у коді, так і на шахівниці. 
           Навчаюся новим технологіям, розвиваю навички у веброзробці та прагну поєднати інтелектуальну дисципліну шахів із творчим підходом у технологіях.
-         </p>
+        </p>
       </div>
     </section>
 
@@ -164,47 +230,32 @@
         <div class="space-y-6 max-w-4xl mx-auto">
           <div>
             <h3 class="text-2xl font-semibold mb-2">♟️ Шахи</h3>
-            <p>Маю 12-річний досвід гри в шахи, I спортивний розряд.
-Учасник і призер міських, обласних, всеукраїнських та міжнародних турнірів. 
-За роки гри здобув понад 30 медалей, грамот і кубків, серед яких перемоги та призові місця на всеукраїнських та міжнародних змаганнях.
-            Деякі з моїх найвагоміших досягнень:
-          </p>
-            <!-- Галерея фото -->
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2 w-full max-w-6xl">
-    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden transition transform hover:scale-105 hover:shadow-lg">
-      <img src="assets/awards/award1.jpg" alt="Грамота 1" class="w-full h-48 object-cover">
-    </div>
-    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden transition transform hover:scale-105 hover:shadow-lg">
-      <img src="assets/awards/award2.jpg" alt="Грамота 2" class="w-full h-48 object-cover">
-    </div>
-    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden transition transform hover:scale-105 hover:shadow-lg">
-      <img src="assets/awards/award3.jpg" alt="Грамота 3" class="w-full h-48 object-cover">
-    </div>
-    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden transition transform hover:scale-105 hover:shadow-lg">
-      <img src="assets/awards/award4.jpg" alt="Грамота 4" class="w-full h-48 object-cover">
-    </div>
-    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden transition transform hover:scale-105 hover:shadow-lg">
-      <img src="assets/awards/award5.jpg" alt="Грамота 5" class="w-full h-48 object-cover">
-    </div>
-    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden transition transform hover:scale-105 hover:shadow-lg">
-      <img src="assets/awards/award6.jpg" alt="Грамота 6" class="w-full h-48 object-cover">
-    </div>
-    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden transition transform hover:scale-105 hover:shadow-lg">
-      <img src="assets/awards/award7.jpg" alt="Грамота 7" class="w-full h-48 object-cover">
-    </div>
-    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden transition transform hover:scale-105 hover:shadow-lg">
-      <img src="assets/awards/award8.jpg" alt="Грамота 8" class="w-full h-48 object-cover">
-    </div>
-    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden transition transform hover:scale-105 hover:shadow-lg">
-      <img src="assets/awards/award9.jpg" alt="Грамота 9" class="w-full h-48 object-cover">
-    </div>
-    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden transition transform hover:scale-105 hover:shadow-lg">
-      <img src="assets/awards/award10.jpg" alt="Грамота 10" class="w-full h-48 object-cover">
-        </div>
+            <p>Маю 12-річний досвід гри в шахи, I спортивний розряд. 
+              Учасник і призер міських, обласних, всеукраїнських та міжнародних турнірів. 
+              За роки гри здобув понад 30 медалей, грамот і кубків, серед яких перемоги та призові місця на всеукраїнських і міжнародних змаганнях.
+              <br><br>Нижче подано кілька найбільш значущих відзнак:
+            </p>
+
+            <!-- Галерея -->
+            <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2 w-full max-w-6xl mx-auto">
+              <img src="assets/awards/award1.jpg" class="rounded-xl shadow-md object-cover w-full h-48 hover:scale-105 transition" alt="">
+              <img src="assets/awards/award2.jpg" class="rounded-xl shadow-md object-cover w-full h-48 hover:scale-105 transition" alt="">
+              <img src="assets/awards/award3.jpg" class="rounded-xl shadow-md object-cover w-full h-48 hover:scale-105 transition" alt="">
+              <img src="assets/awards/award4.jpg" class="rounded-xl shadow-md object-cover w-full h-48 hover:scale-105 transition" alt="">
+              <img src="assets/awards/award5.jpg" class="rounded-xl shadow-md object-cover w-full h-48 hover:scale-105 transition" alt="">
+              <img src="assets/awards/award6.jpg" class="rounded-xl shadow-md object-cover w-full h-48 hover:scale-105 transition" alt="">
+              <img src="assets/awards/award7.jpg" class="rounded-xl shadow-md object-cover w-full h-48 hover:scale-105 transition" alt="">
+              <img src="assets/awards/award8.jpg" class="rounded-xl shadow-md object-cover w-full h-48 hover:scale-105 transition" alt="">
+              <img src="assets/awards/award9.jpg" class="rounded-xl shadow-md object-cover w-full h-48 hover:scale-105 transition" alt="">
+              <img src="assets/awards/award10.jpg" class="rounded-xl shadow-md object-cover w-full h-48 hover:scale-105 transition" alt="">
+            </div>
+          </div>
+
           <div>
             <h3 class="text-2xl font-semibold mb-2">💻 Програмування</h3>
-            <p>Досвід роботи з Python, SQL, PHP, HTML/CSS.
-Реалізовував навчальні та курсові проєкти, включаючи системи нагадувань і інформаційні сервіси.</p>
+            <p>Досвід роботи з Python, SQL, PHP, HTML/CSS. 
+              Реалізовував навчальні та курсові проєкти, включаючи системи нагадувань і інформаційні сервіси.
+            </p>
           </div>
         </div>
       </div>
@@ -250,7 +301,7 @@
       <div class="section-card text-center">
         <h2 class="text-3xl font-semibold mb-4">Контакти</h2>
         <p>Email: <a href="mailto:saa75752@gmail.com">saa75752@gmail.com</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/artem-shevchenko-661087360" target="_blank">linkedin.com/in/artem-shevchenko-661087360</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/artem-shevchenko-661087360" target="_blank">linkedin.com/in/artem-shevченко-661087360</a></p>
         <p>Telegram: <a href="https://t.me/artem_chess" target="_blank">@artem_chess</a></p>
       </div>
     </section>
@@ -289,5 +340,6 @@
   </script>
 </body>
 </html>
+
 
 
