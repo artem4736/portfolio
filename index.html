@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Артем Шевченко — Резюме</title>
+  <title>Резюме — Артем Шевченко</title>
 
   <!-- Збереження теми -->
   <script>
@@ -27,7 +27,7 @@
     :root{
       --bg: #ffffff;
       --surface: #ffffff;
-      --border: #cfe6ff; /* ніжно-блакитна рамка */
+      --border: #cfe6ff;
       --text: #0f172a;
       --muted: #374151;
       --accent: #2563eb;
@@ -44,14 +44,14 @@
       --accent-hover: #60a5fa;
     }
 
-    html,body{
-      height:100%;
-      background:var(--bg);
-      color:var(--text);
+    html, body {
+      height: 100%;
+      background: var(--bg);
+      color: var(--text);
       transition: background-color .35s ease, color .35s ease;
     }
 
-    header{ background:var(--surface); transition: background-color .35s ease; }
+    header { background: var(--surface); transition: background-color .35s ease; }
 
     a {
       color: var(--accent);
@@ -63,10 +63,16 @@
       text-decoration: underline;
     }
 
-    .theme-btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      width:38px; height:38px;
-      border-radius:999px; background:transparent; border:none; cursor:pointer;
+    .theme-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
       transition: background-color .25s ease, color .25s ease;
     }
     .theme-btn:hover {
@@ -74,9 +80,10 @@
       color: white;
     }
 
-    .icon-hidden{ display:none !important; }
-    .icon-visible{ display:inline-block !important; }
+    .icon-hidden { display: none !important; }
+    .icon-visible { display: inline-block !important; }
 
+    /* Картковий стиль секцій */
     .section {
       padding: 0;
       display: flex;
@@ -97,8 +104,43 @@
     }
     .section-card:hover { border-color: var(--accent); }
 
-    main > section { margin: 0; }
     main > section + section { margin-top: 0; }
+
+    /* Бургер меню */
+    .burger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+    }
+
+    .burger span {
+      height: 3px;
+      background: var(--text);
+      margin: 4px 0;
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
+    @media (max-width: 767px) {
+      .burger { display: flex; }
+      nav ul { display: none; flex-direction: column; background: var(--surface); position: absolute; top: 60px; right: 10px; border: 1px solid var(--border); border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+      nav ul.show { display: flex; }
+
+      /* Міняємо порядок кнопок */
+      header nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      header nav > .flex {
+        order: -1; /* кнопки ліворуч */
+        flex-direction: row-reverse; /* тема ліворуч, бургер праворуч */
+      }
+    }
   </style>
 </head>
 
@@ -106,60 +148,40 @@
 
   <!-- Header -->
   <header class="fixed top-0 left-0 w-full shadow z-50">
-    <nav class="max-w-6xl mx-auto flex items-center justify-between p-4">
+    <nav class="max-w-6xl mx-auto flex items-center justify-between p-4 relative">
       <div class="text-2xl font-semibold">Артем Шевченко</div>
 
-      <div class="flex items-center gap-3">
+      <div class="flex items-center gap-4">
+        <!-- Меню -->
+        <ul class="hidden md:flex items-center gap-6 text-sm">
+          <li><a href="#home">Головна</a></li>
+          <li><a href="#about">Про себе</a></li>
+          <li><a href="#projects">Освіта</a></li>
+          <li><a href="#experience">Досвід</a></li>
+          <li><a href="#skills">Навички</a></li>
+          <li><a href="#contact">Контакти</a></li>
+        </ul>
+
+        <!-- Бургер -->
+        <div id="burger" class="burger md:hidden">
+          <span></span><span></span><span></span>
+        </div>
+
         <!-- Перемикач теми -->
         <button id="themeToggle" class="theme-btn" aria-label="Перемкнути тему">
-          <!-- Місяць -->
           <svg id="moon" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 icon-visible" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
             <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
           </svg>
-          <!-- Сонце -->
           <svg id="sun" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 icon-hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2m0 14v2M5 12H3m18 0h-2M6.343 6.343l-1.414-1.414M19.071 19.071l-1.414-1.414M6.343 17.657l-1.414 1.414M19.071 4.929l-1.414 1.414M12 8a4 4 0 100 8 4 4 0 000-8z"/>
           </svg>
         </button>
-
-        <!-- Кнопка-гамбургер -->
-        <button id="menuToggle" class="md:hidden text-[var(--text)] focus:outline-none" aria-label="Відкрити меню">
-          <svg id="menuIcon" xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
-          </svg>
-          <svg id="closeIcon" xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
-          </svg>
-        </button>
       </div>
-
-      <!-- Меню для десктопів -->
-      <ul id="navLinks" class="hidden md:flex items-center gap-6 text-sm">
-        <li><a href="#home">Головна</a></li>
-        <li><a href="#about">Про себе</a></li>
-        <li><a href="#projects">Освіта</a></li>
-        <li><a href="#experience">Досвід</a></li>
-        <li><a href="#skills">Навички</a></li>
-        <li><a href="#contact">Контакти</a></li>
-      </ul>
     </nav>
-
-    <!-- Мобільне меню -->
-    <div id="mobileMenu" class="hidden md:hidden bg-[var(--surface)] border-t border-[var(--border)] shadow-md">
-      <ul class="flex flex-col items-center py-4 space-y-3 text-sm">
-        <li><a href="#home">Головна</a></li>
-        <li><a href="#about">Про себе</a></li>
-        <li><a href="#projects">Освіта</a></li>
-        <li><a href="#experience">Досвід</a></li>
-        <li><a href="#skills">Навички</a></li>
-        <li><a href="#contact">Контакти</a></li>
-      </ul>
-    </div>
   </header>
 
   <!-- Main -->
   <main class="pt-28">
-
     <!-- Головна -->
     <section id="home" class="section">
       <div class="section-card text-center">
@@ -178,7 +200,6 @@
         <p class="leading-relaxed max-w-3xl mx-auto">
           Привіт! Я — Артем, професійний шахіст і студент-програміст. 
           Поєдную аналітичне мислення шахів із логікою програмування, створюючи ефективні та продумані рішення як у коді, так і на шахівниці.
-          Прагну поєднати інтелектуальну дисципліну з творчим підходом у сфері технологій.
         </p>
       </div>
     </section>
@@ -189,8 +210,7 @@
         <h2 class="text-3xl font-semibold mb-4 text-center">Освіта</h2>
         <p class="leading-relaxed max-w-3xl mx-auto">
           2023–теперішній час — Херсонський державний університет, спеціальність «Комп’ютерні науки».  
-        </p>
-        <br>
+        </p><br>
         <p class="leading-relaxed max-w-3xl mx-auto">
           2012–2023 — Херсонська ЗОШ №44, яку закінчив із золотою медаллю.  
         </p>
@@ -201,17 +221,14 @@
     <section id="experience" class="section">
       <div class="section-card">
         <h2 class="text-3xl font-semibold mb-6 text-center">Досвід</h2>
-
         <div class="space-y-6 max-w-4xl mx-auto">
           <div>
             <h3 class="text-2xl font-semibold mb-2">♟️ Шахи</h3>
             <p>
               Маю понад 12 років досвіду гри в шахи, I спортивний розряд.
-              Учасник і призер міських, обласних, всеукраїнських та міжнародних турнірів.
-              Шахи сформували в мені стратегічне мислення, вміння планувати наперед і швидко знаходити рішення.
+              Учасник і призер численних міських, обласних, всеукраїнських і міжнародних турнірів.
             </p>
           </div>
-
           <div>
             <h3 class="text-2xl font-semibold mb-2">💻 Програмування</h3>
             <p>
@@ -227,7 +244,6 @@
     <section id="skills" class="section">
       <div class="section-card">
         <h2 class="text-3xl font-semibold mb-8 text-center">Навички</h2>
-
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-left max-w-5xl mx-auto">
           <div class="p-6 rounded-2xl shadow bg-[var(--surface)]">
             <h3 class="text-xl font-semibold mb-3">💻 Технічні</h3>
@@ -236,7 +252,6 @@
               <li>HTML / CSS, SQL</li>
               <li>Git / GitHub</li>
               <li>Алгоритми та структури даних</li>
-              <li>Основи штучного інтелекту</li>
             </ul>
           </div>
 
@@ -247,7 +262,6 @@
               <li>Стратегічне мислення</li>
               <li>Аналіз партій</li>
               <li>Планування та концентрація</li>
-              <li>Наставництво молодих гравців</li>
             </ul>
           </div>
 
@@ -268,16 +282,15 @@
       <div class="section-card text-center">
         <h2 class="text-3xl font-semibold mb-4">Контакти</h2>
         <p>Email: <a href="mailto:saa75752@gmail.com">saa75752@gmail.com</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/artem-shevchenko-661087360" target="_blank" rel="noopener noreferrer">linkedin.com/in/artem-shevchenko-661087360</a></p>
-        <p>Telegram: <a href="https://t.me/artem_chess" target="_blank" rel="noopener noreferrer">@artem_chess</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/artem-shevchenko-661087360" target="_blank">linkedin.com/in/artem-shevchenko-661087360</a></p>
+        <p>Telegram: <a href="https://t.me/artem_chess" target="_blank">@artem_chess</a></p>
       </div>
     </section>
-
   </main>
 
   <!-- Скрипти -->
   <script>
-    // Тема
+    // Темна тема
     (function(){
       const btn = document.getElementById('themeToggle');
       const sun = document.getElementById('sun');
@@ -304,20 +317,12 @@
       });
     })();
 
-    // Меню
-    (function(){
-      const menuToggle = document.getElementById('menuToggle');
-      const menuIcon = document.getElementById('menuIcon');
-      const closeIcon = document.getElementById('closeIcon');
-      const mobileMenu = document.getElementById('mobileMenu');
-
-      menuToggle.addEventListener('click', () => {
-        const isOpen = !mobileMenu.classList.contains('hidden');
-        mobileMenu.classList.toggle('hidden');
-        menuIcon.classList.toggle('hidden', !isOpen);
-        closeIcon.classList.toggle('hidden', isOpen);
-      });
-    })();
+    // Бургер меню
+    const burger = document.getElementById('burger');
+    const menu = document.querySelector('nav ul');
+    burger.addEventListener('click', () => {
+      menu.classList.toggle('show');
+    });
   </script>
 </body>
 </html>
