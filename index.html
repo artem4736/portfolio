@@ -5,18 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Моє резюме — Артем Шевченко</title>
 
-  <!-- Збереження теми -->
-  <script>
-    (function(){
-      try {
-        const saved = localStorage.getItem('theme');
-        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        if (saved === 'dark' || (!saved && prefersDark)) {
-          document.documentElement.classList.add('dark');
-        }
-      } catch(e){}
-    })();
-  </script>
+  
 
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -165,9 +154,10 @@
           <li><a href="#about">Про себе</a></li>
           <li><a href="#projects">Освіта</a></li>
           <li><a href="#experience">Досвід</a></li>
+          <li><a href="#programming">Програмування</a></li>
           <li><a href="#skills">Навички</a></li>
           <li><a href="#contact">Контакти</a></li>
-          <li><a href="#programming">Програмування</a></li>
+          
         </ul>
 
         <!-- Кнопка теми -->
@@ -261,8 +251,8 @@
 
 <section id="programming" class="section">
   <div class="section-card">
-  <h2 class="text-4xl font-semibold mb-6">Програмування</h2>
-  <p>
+  <h2 class="text-4xl font-semibold mb-6 text-center">Програмування</h2>
+  <p class="leading-relaxed max-w-3xl mx-auto">
     Займаюся розробкою програмного забезпечення та веб-сайтів. 
 <br>
 Досвід роботи з Python, SQL, PHP, HTML/CSS. 
@@ -370,14 +360,6 @@
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
 
 
 
