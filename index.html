@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Резюме — Артем Шевченко</title>
+  <title data-key="page-title">Резюме — Артем Шевченко</title>
 
   <script>
     (function(){
@@ -51,22 +51,41 @@
     a { color: var(--accent); text-decoration: none; transition: color .25s ease; }
     a:hover { color: var(--accent-hover); text-decoration: underline; }
 
-    .theme-btn, .lang-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 38px;
-      height: 38px;
-      border-radius: 999px;
-      background: transparent;
-      border: none;
-      cursor: pointer;
-      transition: background-color .25s ease, color .25s ease;
-    }
-    .theme-btn:hover, .lang-btn:hover { background: var(--accent); color: white; }
+   .theme-btn, .lang-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;               
+  height: 34px;
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--text);
+  border: 1.5px solid var(--border);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-family: inherit;      
+  font-weight: 500;          
+  font-size: 0.6rem;       
+  line-height: 1; 
+  padding: 0;
+}           
 
-    .icon-visible { display: inline; }
-    .icon-hidden { display: none; }
+.theme-btn:hover, .lang-btn:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent-hover);
+  transform: scale(1.05);
+}
+
+.theme-btn svg {
+  width: 16px;
+  height: 16px;
+  stroke-width: 1.8;
+  transition: opacity 0.25s ease;
+}
+
+.icon-visible { display: inline; }
+.icon-hidden { display: none; }
 
     .section {
       padding: 0;
@@ -122,43 +141,66 @@
     }
 
     @media(max-width: 767px) {
-      .burger {
-        display: flex;
-      }
-      nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-      nav .mobile-menu {
-        display: none;
-        flex-direction: column;
-        background: var(--surface);
-        position: fixed;
-        top: 64px;
-        left: 12px;
-        border: 1px solid var(--border);
-        border-radius: 10px;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-        padding: 8px;
-        z-index: 60;
-        min-width: 180px;
-      }
-      nav .mobile-menu.show {
-        display: flex;
-      }
-      nav ul.desktop-menu {
-        display: none;
-      }
-    }
+  .burger {
+    display: flex;
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  nav .mobile-menu {
+    display: none;
+    flex-direction: column;
+    background: var(--surface);
+    position: fixed;
+    top: 64px;
+    left: 12px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    padding: 14px 18px; /* більше простору всередині меню */
+    z-index: 60;
+    min-width: 200px; /* трохи ширше для зручності */
+  }
+
+  nav .mobile-menu.show {
+    display: flex;
+  }
+
+  /* Відстань між пунктами меню */
+  nav .mobile-menu a {
+    display: block;
+    padding: 12px 0; /* додає вертикальні відступи */
+    font-size: 1rem;
+    color: var(--text);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    transition: color 0.25s ease, border-color 0.25s ease;
+  }
+
+  nav .mobile-menu a:last-child {
+    border-bottom: none; /* прибираємо лінію після останнього пункту */
+  }
+
+  nav .mobile-menu a:hover {
+    color: var(--accent-hover);
+    border-color: var(--accent-hover);
+  }
+
+  /* Приховуємо основне горизонтальне меню */
+  nav ul.desktop-menu {
+    display: none;
+  }
   </style>
 </head>
+
 <body class="antialiased">
 
   <header class="fixed top-0 left-0 w-full shadow z-50">
     <nav class="max-w-6xl mx-auto flex items-center justify-between p-4 relative">
-
-      <!-- Ліва частина: бургер і меню -->
       <div class="flex items-center">
         <div id="burger" class="burger md:hidden mr-3" aria-label="Відкрити меню">
           <span></span><span></span><span></span>
@@ -173,7 +215,6 @@
         </ul>
       </div>
 
-      <!-- Права частина: кнопки -->
       <div class="flex items-center gap-3">
         <button id="langToggle" class="lang-btn text-sm font-semibold">EN</button>
         <button id="themeToggle" class="theme-btn" aria-label="Перемкнути тему">
@@ -186,7 +227,6 @@
         </button>
       </div>
 
-      <!-- Мобільне меню -->
       <ul class="mobile-menu md:hidden text-sm">
         <li><a data-key="nav-home" href="#home">Головна</a></li>
         <li><a data-key="nav-about" href="#about">Про себе</a></li>
@@ -200,13 +240,12 @@
 
   <main class="pt-28">
 
-    <!-- Головна -->
     <section id="home" class="section">
       <div class="section-card text-center">
         <div class="mx-auto w-56 h-56 rounded-full overflow-hidden mb-6 shadow-lg">
           <img src="assets/img/photo.jpg" alt="Фото" style="width:100%;height:100%;object-fit:cover;">
         </div>
-        <h1 class="text-3xl md:text-4xl font-bold mb-2">Артем Шевченко</h1>
+        <h1 data-key="home-name" class="text-3xl md:text-4xl font-bold mb-2">Артем Шевченко</h1>
         <p data-key="home-desc" class="text-lg font-semibold mb-4">Професійний шахіст та студент-програміст</p>
       </div>
     </section>
@@ -282,32 +321,33 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-left max-w-5xl mx-auto">
           <div class="p-6 rounded-2xl shadow border border-[var(--border)] hover:border-[var(--accent)] hover:shadow-lg transition">
             <h3 data-key="skills-tech" class="text-xl font-semibold mb-3">💻 Технічні</h3>
-            <ul class="space-y-1 text-[var(--muted)]">
-              <li>Python, PHP, C++</li>
-              <li>HTML / CSS, SQL</li>
-              <li>Git / GitHub</li>
-              <li>Алгоритми та структури даних</li>
+            <ul class="space-y-1 text-[var(--text)]">
+              <li data-key="skills-tech1">Python, PHP, C++</li>
+              <li data-key="skills-tech2">HTML / CSS, SQL</li>
+              <li data-key="skills-tech3">Git / GitHub</li>
+              <li data-key="skills-tech4">Алгоритми та структури даних</li>
             </ul>
           </div>
 
           <div class="p-6 rounded-2xl shadow border border-[var(--border)] hover:border-[var(--accent)] hover:shadow-lg transition">
             <h3 data-key="skills-chess" class="text-xl font-semibold mb-3">♟️ Шахові</h3>
-            <ul class="space-y-1 text-[var(--muted)]">
-              <li>Рейтинг FIDE: 
-                <a href="https://ratings.fide.com/profile/34183680" target="_blank">ratings.fide.com/profile/34183680</a>
+            <ul class="space-y-1 text-[var(--text)]">
+              <li data-key="skills-chess4">Рейтинг FIDE: 
+               
               </li>
-              <li>Стратегічне мислення</li>
-              <li>Аналіз і оцінка позицій</li>
-              <li>Аналітика партій</li>
+              <li>  <a href="https://ratings.fide.com/profile/34183680" target="_blank">ratings.fide.com/profile/34183680</a></li>
+              <li data-key="skills-chess1">Стратегічне мислення</li>
+              <li data-key="skills-chess2">Аналіз і оцінка позицій</li>
+              <li data-key="skills-chess3">Аналітика партій</li>
             </ul>
           </div>
 
           <div class="p-6 rounded-2xl shadow border border-[var(--border)] hover:border-[var(--accent)] hover:shadow-lg transition">
             <h3 data-key="skills-lang" class="text-xl font-semibold mb-3">🌐 Мовні</h3>
-            <ul class="space-y-1 text-[var(--muted)]">
-              <li>Українська — рідна</li>
-              <li>Англійська — вільно</li>
-              <li>Російська — вільно</li>
+            <ul class="space-y-1 text-[var(--text)]">
+              <li data-key="skills-lang1">Українська — рідна</li>
+              <li data-key="skills-lang2">Англійська — вільно</li>
+              <li data-key="skills-lang3">Російська — вільно</li>
             </ul>
           </div>
         </div>
@@ -346,10 +386,25 @@
     syncIcons();
 
     // Бургер
-    const burger=document.getElementById('burger');
-    const menu=document.querySelector('nav .mobile-menu');
-    burger.onclick=e=>{e.stopPropagation();menu.classList.toggle('show');};
-    document.addEventListener('click',e=>{if(!menu.contains(e.target)&&!burger.contains(e.target))menu.classList.remove('show');});
+    const burger = document.getElementById('burger');
+const menu = document.querySelector('nav .mobile-menu');
+
+burger.onclick = e => {
+  e.stopPropagation();
+  menu.classList.toggle('show');
+};
+
+document.addEventListener('click', e => {
+  if (!menu.contains(e.target) && !burger.contains(e.target))
+    menu.classList.remove('show');
+});
+
+// ✅ ДОДАНО: закриття меню при кліку на пункт
+menu.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    menu.classList.remove('show');
+  });
+});
   
     // Фото
     const imgs=document.querySelectorAll('.award-img');
@@ -358,11 +413,13 @@
     imgs.forEach(i=>i.addEventListener('click',()=>{lbImg.src=i.src;lightbox.classList.remove('hidden');}));
     lightbox.addEventListener('click',()=>lightbox.classList.add('hidden'));
 
-    // Перемикач мови
+    // Мова
     const langBtn=document.getElementById('langToggle');
     let currentLang='ua';
     const translations={
       en:{
+        "page-title":"Resume — Artem Shevchenko",
+        "home-name":"Artem Shevchenko",
         "nav-home":"Home","nav-about":"About","nav-edu":"Education","nav-exp":"Experience","nav-skill":"Skills","nav-contact":"Contacts",
         "home-desc":"Professional chess player and programming student",
         "about-title":"About Me",
@@ -377,25 +434,42 @@
         "exp-code-text":"Experience with Python, C++, SQL, PHP, HTML/CSS. Created academic and course projects, including reminder systems and information services.",
         "skills-title":"Skills",
         "skills-tech":"💻 Technical",
-        "skills-chess":"♟️ Chess",
-        "skills-lang":"🌐 Languages",
-        "contact-title":"Contacts"
+        "skills-tech4": "Algorithms and data structures",
+        "skills-chess": "♟️ Chess",
+        "skills-chess1": "Strategic thinking",
+        "skills-chess2": "Analysis and evaluation of positions",
+        "skills-chess3": "Party analytics",
+        "skills-chess4": "FIDE rating: ",
+        "skills-lang": "🌐 Languages",
+        "skills-lang1": "Ukrainian — native",
+        "skills-lang2": "Russian — fluent",
+        "skills-lang3": "English — fluent",
+        "contact-title": "Contacts"
       },
       ua:{}
     };
-    for(let k in translations.en){translations.ua[k]=document.querySelector(`[data-key="${k}"]`)?.innerText||'';}
+    for(let k in translations.en){
+      const el=document.querySelector(`[data-key="${k}"]`);
+      translations.ua[k]=el?.innerText||'';
+    }
 
     langBtn.onclick=()=>{
       currentLang=currentLang==='ua'?'en':'ua';
       langBtn.innerText=currentLang==='ua'?'EN':'UA';
       document.querySelectorAll('[data-key]').forEach(el=>{
         const key=el.dataset.key;
-        if(translations[currentLang][key])el.innerText=translations[currentLang][key];
+        if(translations[currentLang][key]){
+          el.innerText=translations[currentLang][key];
+        }
       });
+      document.title = translations[currentLang]["page-title"];
     };
   </script>
+
 </body>
 </html>
+
+
 
 
 
